@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imprint · arconsis Forge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #000000;
+            --surface: #0a0602;
+            --fire-deep: #7a2000;
+            --fire-mid: #d04500;
+            --fire-glow: #e86010;
+            --fire-bright: #ff7820;
+            --text: #ffffff;
+            --muted: rgba(255,255,255,.78);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-size: 17px;
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 0 24px;
+            -webkit-font-smoothing: antialiased;
+        }
+        .imprint-wrap {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 64px 0 120px;
+        }
+        .imprint-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,.6);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 56px;
+            letter-spacing: .02em;
+            transition: color .2s;
+        }
+        .imprint-back:hover { color: var(--fire-glow); }
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(40px, 6vw, 72px);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -.02em;
+            margin-bottom: 28px;
+            background: linear-gradient(118deg, #d04500 0%, #ff7820 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .imprint-intro {
+            font-size: 18px;
+            color: var(--muted);
+            margin-bottom: 56px;
+            max-width: 620px;
+            line-height: 1.6;
+        }
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin: 48px 0 14px;
+            color: var(--text);
+        }
+        h2:first-of-type { margin-top: 0; }
+        p {
+            margin-bottom: 14px;
+            color: var(--muted);
+        }
+        a {
+            color: var(--fire-glow);
+            text-decoration: none;
+            transition: color .2s;
+        }
+        a:hover { color: var(--fire-bright); }
+        ul {
+            list-style: none;
+            margin: 0 0 14px;
+        }
+        ul li {
+            margin-bottom: 8px;
+            color: var(--muted);
+        }
+        .imprint-spam-note {
+            font-size: 14px;
+            font-style: italic;
+            color: rgba(255,255,255,.55);
+            margin-top: 4px;
+            padding-left: 14px;
+            border-left: 2px solid rgba(232,96,16,.35);
+            line-height: 1.6;
+        }
+        .imprint-foot {
+            margin-top: 96px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,.05);
+            font-size: 12.5px;
+            color: rgba(255,255,255,.45);
+            font-weight: 300;
+        }
+        @media (max-width: 600px) {
+            .imprint-wrap { padding: 48px 0 80px; }
+            .imprint-back { margin-bottom: 36px; }
+            h2 { font-size: 19px; margin-top: 36px; }
+            .imprint-intro { margin-bottom: 40px; }
+        }
+    </style>
+<style id="pwd-gate-style">
+html.locked, html.locked body { overflow:hidden !important; height:100% !important; }
+html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-events:none !important; }
+#pwd-gate { position:fixed; inset:0; background:#000; z-index:99999; display:flex; align-items:center; justify-content:center; padding:40px; font-family:'Outfit','DM Sans',sans-serif; }
+#pwd-gate .pwd-box { background:linear-gradient(160deg,rgba(78,32,8,.95) 0%,rgba(42,18,6,.92) 38%,rgba(16,8,3,.88) 100%); border:1px solid rgba(232,96,16,.3); border-radius:16px; padding:36px; max-width:360px; width:100%; text-align:center; box-shadow:0 12px 48px rgba(0,0,0,.7); }
+#pwd-gate h1 { font-size:22px; font-weight:500; color:#fff; margin:0 0 8px; letter-spacing:-.3px; font-family:'Outfit',sans-serif; }
+#pwd-gate .pwd-sub { font-size:13px; color:rgba(255,255,255,.6); margin:0 0 24px; font-family:'DM Sans',sans-serif; }
+#pwd-gate input { width:100%; padding:12px 14px; background:rgba(0,0,0,.4); border:1px solid rgba(232,96,16,.3); border-radius:8px; color:#fff; font-family:'Inter',sans-serif; font-size:14px; outline:none; transition:border-color .2s; box-sizing:border-box; }
+#pwd-gate input:focus { border-color:#ff7820; }
+#pwd-gate .err { color:#ff5a30; font-size:12px; margin-top:8px; min-height:16px; opacity:0; transition:opacity .2s; font-family:'DM Sans',sans-serif; }
+#pwd-gate .err.show { opacity:1; }
+#pwd-gate button { margin-top:14px; padding:12px 24px; background:linear-gradient(135deg,#7a2000,#d04800); border:none; border-radius:8px; color:#fff; font-family:'Outfit',sans-serif; font-size:14px; font-weight:600; cursor:pointer; width:100%; transition:transform .2s; }
+#pwd-gate button:hover { transform:translateY(-1px); }
+</style>
+<script>(function(){try{if(sessionStorage.getItem('forge_v5_unlocked')!=='1')document.documentElement.classList.add('locked');}catch(e){document.documentElement.classList.add('locked');}})();</script>
+</head>
+<body>
+<div id="pwd-gate" aria-modal="true" role="dialog" aria-label="Password protected">
+    <div class="pwd-box">
+        <h1>arconsis Forge &mdash; Preview</h1>
+        <p class="pwd-sub">Diese Vorschau ist passwortgesch&uuml;tzt.</p>
+        <input type="password" id="pwd-input" placeholder="Passwort" autocomplete="off" />
+        <div class="err" id="pwd-error">Falsches Passwort</div>
+        <button id="pwd-submit" type="button">Einloggen</button>
+    </div>
+</div>
+<script>(function(){var K='forge_v5_unlocked',P='arconsis',g=document.getElementById('pwd-gate');function ok(){document.documentElement.classList.remove('locked');if(g)g.style.display='none';}if(sessionStorage.getItem(K)==='1'){ok();return;}var i=document.getElementById('pwd-input'),b=document.getElementById('pwd-submit'),e=document.getElementById('pwd-error');function t(){if(i.value===P){try{sessionStorage.setItem(K,'1');}catch(_){}ok();}else{e.classList.add('show');i.value='';i.focus();}}b.addEventListener('click',t);i.addEventListener('keydown',function(ev){if(ev.key==='Enter')t();});setTimeout(function(){i.focus();},50);})();</script>
+
+    <main class="imprint-wrap">
+        <a href="arconsis-forge-v5.html" class="imprint-back" aria-label="Back to arconsis Forge home">← Back to arconsis Forge</a>
+
+        <h1>Imprint</h1>
+        <p class="imprint-intro">Below you will find the legal details for this website and all necessary contact information in accordance with applicable regulations.</p>
+
+        <h2>arconsis IT-Solutions GmbH</h2>
+        <p>Am Storrenacker 8<br>76139 Karlsruhe, Germany</p>
+
+        <h2>Contact</h2>
+        <p>
+            Phone: +49 (0)721 / 98 97 71-0<br>
+            Fax: +49 (0)721 / 98 97 71-99<br>
+            E-mail: <a href="mailto:contact@arconsis.com">contact@arconsis.com</a>
+        </p>
+        <p class="imprint-spam-note">The use of this e-mail address for sending unsolicited commercial e-mails (SPAM) and/or use in so-called e-mail lists or sales is strictly prohibited and will be reported immediately.</p>
+
+        <h2>Managing directors authorized to represent</h2>
+        <p>Achim Baier<br>Wolfgang Frank</p>
+
+        <h2>Register Court</h2>
+        <p>Local Court / Amtsgericht Mannheim<br>Register number: HRB 700713</p>
+
+        <h2>Sales tax identification number according to §27a UStG</h2>
+        <p>DE 249 716 289</p>
+
+        <h2>Responsible for the content</h2>
+        <p>arconsis IT-Solutions GmbH<br>Achim Baier and Wolfgang Frank<br>Am Storrenacker 8<br>76139 Karlsruhe<br>Germany</p>
+
+        <h2>The imprint also applies to the following online presences</h2>
+        <ul>
+            <li><a href="https://www.instagram.com/arconsis" target="_blank" rel="noopener noreferrer">www.instagram.com/arconsis</a></li>
+            <li><a href="https://www.youtube.com/@arconsis" target="_blank" rel="noopener noreferrer">www.youtube.com/@arconsis</a></li>
+            <li><a href="https://www.linkedin.com/company/arconsis-it-solutions-gmbh" target="_blank" rel="noopener noreferrer">www.linkedin.com/company/arconsis-it-solutions-gmbh</a></li>
+            <li><a href="https://medium.com/arconsis" target="_blank" rel="noopener noreferrer">medium.com/arconsis</a></li>
+        </ul>
+
+        <h2>Information about a possible infringement of property rights</h2>
+        <p>Please contact us immediately if you believe your property rights have been infringed by this website. We will check this immediately and change it if necessary. Costs incurred prior to contacting us (lawyer or otherwise) will not be reimbursed by us. This violates the principle "No warning without prior contact".</p>
+
+        <p class="imprint-foot">© 2026 arconsis IT-Solutions GmbH. All rights reserved.</p>
+    </main>
+</body>
+</html>

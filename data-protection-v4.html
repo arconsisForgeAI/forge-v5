@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Protection · arconsis Forge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #000000;
+            --fire-deep: #7a2000;
+            --fire-mid: #d04500;
+            --fire-glow: #e86010;
+            --fire-bright: #ff7820;
+            --text: #ffffff;
+            --muted: rgba(255,255,255,.78);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 0 24px;
+            -webkit-font-smoothing: antialiased;
+        }
+        .legal-wrap { max-width: 820px; margin: 0 auto; padding: 64px 0 120px; }
+        .legal-back {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: rgba(255,255,255,.6); text-decoration: none;
+            font-size: 14px; font-weight: 500;
+            margin-bottom: 56px; letter-spacing: .02em; transition: color .2s;
+        }
+        .legal-back:hover { color: var(--fire-glow); }
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(36px, 5.5vw, 64px);
+            font-weight: 800; line-height: 1.06; letter-spacing: -.02em;
+            margin-bottom: 28px;
+            background: linear-gradient(118deg, #d04500 0%, #ff7820 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .legal-intro { font-size: 17px; color: var(--muted); margin-bottom: 56px; max-width: 720px; line-height: 1.6; }
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(24px, 3vw, 32px);
+            font-weight: 700; line-height: 1.18;
+            margin: 64px 0 20px; color: var(--text);
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(232,96,16,.25);
+        }
+        h2:first-of-type { margin-top: 0; }
+        h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px; font-weight: 600; line-height: 1.3;
+            margin: 32px 0 10px; color: var(--text);
+        }
+        p { margin-bottom: 14px; color: var(--muted); }
+        a { color: var(--fire-glow); text-decoration: none; transition: color .2s; word-break: break-word; }
+        a:hover { color: var(--fire-bright); }
+        ul { list-style: none; margin: 0 0 14px; padding-left: 0; }
+        ul li {
+            margin-bottom: 8px; color: var(--muted);
+            padding-left: 18px; position: relative;
+        }
+        ul li::before {
+            content: ""; position: absolute; left: 0; top: 12px;
+            width: 6px; height: 6px; border-radius: 50%;
+            background: rgba(232,96,16,.5);
+        }
+        .legal-foot {
+            margin-top: 96px; padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,.05);
+            font-size: 12.5px; color: rgba(255,255,255,.45); font-weight: 300;
+        }
+        @media (max-width: 600px) {
+            .legal-wrap { padding: 48px 0 80px; }
+            .legal-back { margin-bottom: 36px; }
+            h2 { margin-top: 48px; }
+        }
+    </style>
+<style id="pwd-gate-style">
+html.locked, html.locked body { overflow:hidden !important; height:100% !important; }
+html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-events:none !important; }
+#pwd-gate { position:fixed; inset:0; background:#000; z-index:99999; display:flex; align-items:center; justify-content:center; padding:40px; font-family:'Outfit','DM Sans',sans-serif; }
+#pwd-gate .pwd-box { background:linear-gradient(160deg,rgba(78,32,8,.95) 0%,rgba(42,18,6,.92) 38%,rgba(16,8,3,.88) 100%); border:1px solid rgba(232,96,16,.3); border-radius:16px; padding:36px; max-width:360px; width:100%; text-align:center; box-shadow:0 12px 48px rgba(0,0,0,.7); }
+#pwd-gate h1 { font-size:22px; font-weight:500; color:#fff; margin:0 0 8px; letter-spacing:-.3px; font-family:'Outfit',sans-serif; }
+#pwd-gate .pwd-sub { font-size:13px; color:rgba(255,255,255,.6); margin:0 0 24px; font-family:'DM Sans',sans-serif; }
+#pwd-gate input { width:100%; padding:12px 14px; background:rgba(0,0,0,.4); border:1px solid rgba(232,96,16,.3); border-radius:8px; color:#fff; font-family:'Inter',sans-serif; font-size:14px; outline:none; transition:border-color .2s; box-sizing:border-box; }
+#pwd-gate input:focus { border-color:#ff7820; }
+#pwd-gate .err { color:#ff5a30; font-size:12px; margin-top:8px; min-height:16px; opacity:0; transition:opacity .2s; font-family:'DM Sans',sans-serif; }
+#pwd-gate .err.show { opacity:1; }
+#pwd-gate button { margin-top:14px; padding:12px 24px; background:linear-gradient(135deg,#7a2000,#d04800); border:none; border-radius:8px; color:#fff; font-family:'Outfit',sans-serif; font-size:14px; font-weight:600; cursor:pointer; width:100%; transition:transform .2s; }
+#pwd-gate button:hover { transform:translateY(-1px); }
+</style>
+<script>(function(){try{if(sessionStorage.getItem('forge_v5_unlocked')!=='1')document.documentElement.classList.add('locked');}catch(e){document.documentElement.classList.add('locked');}})();</script>
+</head>
+<body>
+<div id="pwd-gate" aria-modal="true" role="dialog" aria-label="Password protected">
+    <div class="pwd-box">
+        <h1>arconsis Forge &mdash; Preview</h1>
+        <p class="pwd-sub">Diese Vorschau ist passwortgesch&uuml;tzt.</p>
+        <input type="password" id="pwd-input" placeholder="Passwort" autocomplete="off" />
+        <div class="err" id="pwd-error">Falsches Passwort</div>
+        <button id="pwd-submit" type="button">Einloggen</button>
+    </div>
+</div>
+<script>(function(){var K='forge_v5_unlocked',P='arconsis',g=document.getElementById('pwd-gate');function ok(){document.documentElement.classList.remove('locked');if(g)g.style.display='none';}if(sessionStorage.getItem(K)==='1'){ok();return;}var i=document.getElementById('pwd-input'),b=document.getElementById('pwd-submit'),e=document.getElementById('pwd-error');function t(){if(i.value===P){try{sessionStorage.setItem(K,'1');}catch(_){}ok();}else{e.classList.add('show');i.value='';i.focus();}}b.addEventListener('click',t);i.addEventListener('keydown',function(ev){if(ev.key==='Enter')t();});setTimeout(function(){i.focus();},50);})();</script>
+
+    <main class="legal-wrap">
+        <a href="arconsis-forge-v5.html" class="legal-back">← Back to arconsis Forge</a>
+
+        <h1>Data Protection and Privacy Policy</h1>
+        <p class="legal-intro">Welcome to our website and thank you for your interest in our company. The protection of your personal data and the safeguarding of your personal rights are particularly important to us. We treat your personal data confidentially, in accordance with the statutory data protection legislations and the information in this data protection declaration. We would like to point out data transmission on the Internet (e.g. when communicating via e-mail) can have security gaps. We would like to inform you about how we handle your data on our website and, of course, in compliance with the General Data Protection Regulation (DS-GVO) and the Federal Data Protection Act (BDSG), process. If you have any questions about this privacy policy or if you would like more detailed information on any point, please contact our data protection officer at any time using the contact details below.</p>
+
+        <h2>Name and contact details of the responsible</h2>
+        <p>arconsis IT-Solutions GmbH<br>Am Storrenacker 8<br>76139 Karlsruhe, Germany<br>E-Mail: <a href="mailto:contact@arconsis.com">contact@arconsis.com</a></p>
+
+        <h2>Name and contact details of the data protection officer</h2>
+        <p>ENSECUR GmbH<br>Kaiserstr. 86<br>76133 Karlsruhe, Germany<br>Personally responsible: Mr. Thorsten Jordan<br>E-Mail: <a href="mailto:dsb-arconsis@ensecur.de">dsb-arconsis@ensecur.de</a></p>
+
+        <h2>Data collected automatically</h2>
+        <p>When you access our website, our web servers automatically collect information of a general nature. This includes:</p>
+        <ul>
+            <li>Browser type and version</li>
+            <li>Operating system in use</li>
+            <li>Referrer URL</li>
+            <li>Time of server request</li>
+            <li>IP address (this is stored by us only anonymized)</li>
+        </ul>
+        <p>This is exclusively information that does not allow any conclusions to be drawn about your person. We or third parties commissioned by us evaluate this data for statistical purposes only and only in anonymous form to optimize our website, to increase user-friendliness, effectiveness and security.</p>
+
+        <h2>Further information for website visitors according to Art. 13 GDPR</h2>
+
+        <h3>Purpose and legal basis of data processing (Art. 13 para. 1 c DS-GVO)</h3>
+        <ul>
+            <li>Handling and processing of contact requests (Art. 6 para. 1 f DS-GVO)*</li>
+            <li>Handling and processing of support requests (Art. 6 para. 1 b/f DS-GVO)*</li>
+            <li>Technical operation of the website (Art. 6 para. 1 f DS-GVO)*</li>
+            <li>Optimization of the website services by evaluating website usage data (Art. 6 para. 1 a/f DS-GVO)*</li>
+            <li>Enforcement of legal claims and defense in legal disputes</li>
+            <li>Ensuring IT security</li>
+            <li>Prevention of criminal acts</li>
+            <li>Actions for business management and further development of services and products</li>
+            <li>Ensuring the website functions</li>
+        </ul>
+        <p style="font-size:14px;color:rgba(255,255,255,.55);">* Interests of the responsible party when weighing interests (Art. 13 para. 1 d DS-GVO)</p>
+
+        <h3>Recipients or categories of recipients of the personal data (Art. 13 para. 1 e DS-GVO)</h3>
+        <p>In the context of calling up and using services on our website, we pass on data to recipients such as plug-in producers, hosting providers, media and communication service providers. Important: We only pass on personal data to third party providers with your consent, to the extent this is required by data protection law.</p>
+
+        <h3>Transfer to third countries (Art. 13 para. 1 f DS-GVO)</h3>
+        <p>It is possible that, while calling up and using our website and associated services, data may be transmitted to third countries via subcontractors or companies associated with them. Potential risks may include unenforceable data subject rights and a lower level of data protection. We minimize the risk as far as possible by concluding order processing contracts (if such a contractual relationship exists) and standard contractual clauses including effective supplements required by the supervisory authorities.</p>
+
+        <h3>Storage duration according to legal retention obligations (Art. 13 para. 2 a DS-GVO)</h3>
+        <ul>
+            <li>Web server (Hosting Provider): 8 weeks</li>
+            <li>Contact form: Your data will only be used to fulfill your request and will be deleted thereafter, as long as no legal, contractual or statutory retention obligation prevents it.</li>
+            <li>Cookies: Information on setting and deleting cookies can be found in the cookie instructions on our homepage.</li>
+        </ul>
+        <p>Until the expiration of the storage period, the data transmitted to us will be protected by appropriate technical and organizational means to protect them from accidental or intentional manipulation, loss, destruction or access by unauthorized persons. Our security measures are continuously monitored and improved in accordance with technological developments and organizational possibilities.</p>
+
+        <h3>Right of information, correction, deletion, restriction, data portability and objection (Art. 13 para. 2 b DS-GVO)</h3>
+        <p>As a data subject, you have the right to information, correction and deletion of your data and to the restriction of processing, as well as a right to data portability at any time. For any of these purposes, please contact the responsible person using the contact details provided.</p>
+
+        <h3>Right of objection (Art. 21 para. 1 DS-GVO)</h3>
+        <p>Insofar as the processing of your data is carried out to protect legitimate interests, you have the right to object to this processing at any time by contacting us using the contact details provided, if reasons arise from your situation that conflict with this data processing. We will then terminate this processing unless it serves predominant interests worthy of protection on our part.</p>
+
+        <h3>Right of withdrawal (Art. 13 para. 2 c DS-GVO)</h3>
+        <p>If you have consented to the processing of your data, you have the right to revoke this consent at any time for the future. The lawfulness of the processing until the revocation is not affected by this. For this purpose, please contact the responsible office using the contact details provided.</p>
+
+        <h3>Right of complaint (Art. 13 para. 2 d DS-GVO)</h3>
+        <p>As an affected person, you can contact the responsible state commissioner for data protection and freedom of information in Baden-Württemberg at any time if you have a complaint.</p>
+
+        <h3>Existence of a necessity to provide personal data (Art. 13 para. 2 e DS-GVO)</h3>
+        <p>The collected data is necessary for the technical operation of the website, the processing of contact and appointment requests for newsletter subscription and support requests. A possible consequence of not providing your data may be that you cannot use offers on our website or not to their full extent.</p>
+
+        <h2>Zapier as an automation service</h2>
+        <p>We use the automation service Zapier to streamline and optimize processes between various applications. Zapier enables the integration and data exchange between different software solutions used within our company.</p>
+        <p>The use of Zapier serves to automate and enhance the efficiency of internal business processes, particularly for:</p>
+        <ul>
+            <li>Synchronizing data between applications</li>
+            <li>Automating workflows and notifications</li>
+            <li>Improving internal operations and processes</li>
+        </ul>
+        <p>The processing of data is based on the following legal grounds:</p>
+        <ul>
+            <li>Art. 6 para 1 b) GDPR (Contract Performance): When automation is necessary for the fulfillment of a contract.</li>
+            <li>Art. 6 para 1 f) GDPR (Legitimate Interest): When automation serves to increase efficiency and improve internal processes, provided that the interests of the affected individuals do not outweigh these benefits.</li>
+        </ul>
+        <p>When using Zapier, personal data from the following categories may be processed:</p>
+        <ul>
+            <li>Data subjects: Customers, prospects, business partners, employees</li>
+            <li>Types of data: Name, email address, contact details, order information, communication content, technical usage data (e.g., IP address, timestamp)</li>
+        </ul>
+        <p>Zapier, Inc. is based in the United States (548 Market St. #62411, San Francisco, CA 94104-5401, USA). The transfer of personal data to the USA is carried out based on the EU Standard Contractual Clauses (SCCs) under Article 46 para 2 c) GDPR. Additionally, Zapier is certified under the Data Privacy Framework, ensuring an adequate level of data protection in accordance with Article 45 GDPR.</p>
+        <p>For more information on data processing by Zapier, please refer to their privacy policy: <a href="https://zapier.com/privacy" target="_blank" rel="noopener noreferrer">zapier.com/privacy</a>.</p>
+
+        <h2>LinkedIn Company Page</h2>
+        <p>We use LinkedIn as a social network to connect and communicate with different groups of people. LinkedIn Ireland Unlimited Company, Wilton Place, Dublin 2, Ireland, is responsible for processing personal user data on LinkedIn's websites.</p>
+        <p>When you visit our LinkedIn pages, LinkedIn processes certain information about you, even if you do not have a LinkedIn user account or are not logged in to LinkedIn. LinkedIn informs you about how LinkedIn processes your data in its <a href="https://www.linkedin.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</a>. As the operator of our LinkedIn page, we can view your public profile on LinkedIn. What we can see depends on what you have set in your profile. If you contact us via our LinkedIn page, we will process your name and the content of your messages, inquiries, or other contributions to us for the purpose of processing your contributions accordingly and responding to them if necessary. Depending on the nature of your inquiry, we process your personal data on the basis of our legitimate interest pursuant to Art. 6 (1) (f) GDPR or Art. 6 (1) (b) GDPR if your inquiry is aimed at concluding a contract with us.</p>
+        <p>LinkedIn provides us with so-called page analytics data. This data consists of anonymous statistics that we can use to evaluate the quality of our LinkedIn page and our content. LinkedIn collects usage data about your interactions on our LinkedIn page and uses it to generate statistics. We do not have access to the usage data. The processing of page analytics data is subject to <a href="https://legal.linkedin.com/pages-joint-controller-addendum" target="_blank" rel="noopener noreferrer">joint responsibility</a>, which is governed by this agreement. In this agreement, LinkedIn undertakes to assume responsibility for this and to fulfill its obligations to data subjects under the GDPR. The legal basis for this data processing is our legitimate interest pursuant to Art. 6 (1) (f) GDPR in order to better understand how users interact with our LinkedIn page (e.g., number of followers, number of views of individual page areas, user statistics by age, geography, and language) and to be able to adapt and improve this page to suit the target audience. We store your personal data on our systems, i.e., outside of LinkedIn, if and for as long as it is necessary for the purposes of collection or if there are legal retention obligations.</p>
+        <p>LinkedIn Ireland Unlimited Company may transfer some of the data it collects to other LinkedIn companies located outside the European Union, such as LinkedIn Corporation and its US subsidiaries ("LinkedIn") based in the United States. To ensure an adequate level of data protection, LinkedIn bases such data transfers on the European Commission's standard contractual clauses. In addition, as of April 2024, LinkedIn Corporation is an active participant in the EU-U.S. Data Privacy Framework.</p>
+        <p>If you wish to exercise your rights as a data subject vis-à-vis LinkedIn, please contact LinkedIn directly. The link above will take you to a contact form that you can use to contact LinkedIn. In other cases, please use the contact options listed at the beginning of this privacy policy.</p>
+
+        <h2>Instagram Business Page</h2>
+        <p>We operate a business page (so-called "Instagram Business Page") on the Instagram platform, a service of Meta Platforms Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Ireland. Please note that your use of the Instagram Page and its features is at your own risk.</p>
+
+        <h3>Purpose of processing and legal basis</h3>
+        <p>Our Instagram page is used to communicate with interested parties and users of our offers, as well as to provide information about our company and services. We process your data on the basis of our legitimate interest according to Art. 6 para. 1 f) GDPR in order to communicate with you and to improve our visibility. Our overriding legitimate interest is to effectively and specifically address our target groups and to improve our offers and our visibility on a widely used platform.</p>
+
+        <h3>Instagram data processing</h3>
+        <p>When you visit our Instagram page, Meta Platforms processes personal data. This includes:</p>
+        <ul>
+            <li>Your IP address</li>
+            <li>Information about your device and browser</li>
+            <li>Your interactions with our Instagram page (e.g. likes, comments, messages)</li>
+        </ul>
+        <p>This data may be processed by Meta Platforms for its own purposes, e.g. to create user profiles and for personalised advertising. We have no influence on the processing by Instagram.</p>
+        <p>Our Instagram page offers you the opportunity to send us messages, respond to our posts or comment on them. Please consider what personal information you want to share with us on the business page. If you do not wish to share your personal data with Meta, you can always contact us through other means (e.g. website, address, etc.).</p>
+        <p>The <a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener noreferrer">data protection guidelines of Meta Platforms</a> apply to data processing by Instagram. You can assert your rights to information, correction, objection, transferability and deletion of the data both against us and against Facebook (Meta Platforms). Please note that Facebook (Meta Platforms) has primary responsibility for the processing of Insight data. You can find more information about your data subject rights at Facebook at the following <a href="https://de-de.facebook.com/privacy/policy" target="_blank" rel="noopener noreferrer">link</a>.</p>
+
+        <h2>Contact form or feedback</h2>
+        <p>The information that you voluntarily provide to us as part of a contact request or as feedback will only be used to respond to your inquiry or contact. The disclosure to third parties will not happen.</p>
+
+        <h2>Cookies</h2>
+        <p>So-called "cookies" are used in various sections on our website. Cookies are small text files that are stored by the web browser on your computer or mobile device. Cookies do not cause any damage to your computer and do not contain viruses and are automatically deleted after expiration. While some cookies expire when you end your Internet session, others are stored for a specific period of time. We use cookies to personalize content and ads, provide social media features and analyze the traffic on our website. Details on the use of cookies can be found in our separate cookie information, which is displayed as a consent banner when you call up our website. We use the cookie management tool cookiebot for this purpose. If you have made a selection, you can also change your choice at any time later via the cookie settings.</p>
+
+        <h2>Google Analytics</h2>
+        <p>This website uses <a href="https://www.google.com/intl/de_ALL/analytics/" target="_blank" rel="noopener noreferrer">Google Analytics</a>, a web analytics service provided by Google, Inc. ("Google"). Google Analytics uses "cookies", small text files that are stored on your computer, to help the website analyze how visitors use the site. The information generated by the cookie about your use of this website is usually transmitted to a Google server in the USA and stored there. However, by using IP anonymization on this website, your IP address will be truncated beforehand by Google within member states of the European Union or in other contracting states to the Agreement of the European Economic Area. Only in exceptional cases is the full IP address transmitted to a Google server in the USA and truncated there. On behalf of the operator of this website, Google will use this information for the purpose of evaluating your use of the website, compiling reports on website activity and providing other services relating to website activity and internet usage to the website operator. The IP address transmitted by your browser as part of Google Analytics is not merged with other data from Google. You may refuse the use of cookies by selecting the appropriate settings on your browser; however, please note that if you do this you may not be able to use the full functionality of this website. You can also prevent the collection of data generated by the cookie and related to your use of the website (including your IP address) to Google, as well as the processing of this data by Google, by downloading and installing the browser plugin available at <a href="https://tools.google.com/dlpage/gaoptout?hl=de" target="_blank" rel="noopener noreferrer">this link</a>.</p>
+        <p>For more information on terms of use and data protection, please visit <a href="https://marketingplatform.google.com/about/analytics/terms/us/" target="_blank" rel="noopener noreferrer">Google's marketing platform terms</a>. We would like to point out that on this website Google Analytics has been extended by the code <code>gat._anonymizeIp();</code> to ensure the anonymized collection of IP addresses (so-called IP masking). Furthermore, we use Google Analytics to analyze data from AdWords and the Double-Click cookie for statistical purposes. If you do not wish for this, you can deactivate this via the <a href="https://www.google.com/settings/ads/onweb/?hl=de" target="_blank" rel="noopener noreferrer">Ads Preferences Manager</a> or adjust your consent to data processing accordingly using our cookie management tool.</p>
+
+        <h2>YouTube / Google</h2>
+        <p>We use the YouTube.com platform to post own videos and make them publicly available. Videos from YouTube are linked or included via links with the integration of the offer of the company YouTube LLC, which is a subsidiary of Google LLC (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland). We do not consider ourselves responsible for the content of websites to which links are provided. In the event that you follow a link on YouTube, we nevertheless point out that YouTube stores the data of its users (e.g. personal information, IP address) in accordance with its own data usage guidelines and uses it for business purposes. In case of the integration of videos, contents of the YouTube website are displayed in partial areas of a browser window. The YouTube videos are only called up when you click on them. If you call up a page of our website on which YouTube videos are embedded in this form, a connection is established to the YouTube servers and the content is displayed on the website by informing your browser. For more information, visit <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's privacy policy</a>.</p>
+
+        <p class="legal-foot">© 2026 arconsis IT-Solutions GmbH. All rights reserved.</p>
+    </main>
+</body>
+</html>

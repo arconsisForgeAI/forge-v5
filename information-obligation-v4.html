@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information Obligation · arconsis Forge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #000000;
+            --fire-deep: #7a2000;
+            --fire-mid: #d04500;
+            --fire-glow: #e86010;
+            --fire-bright: #ff7820;
+            --text: #ffffff;
+            --muted: rgba(255,255,255,.78);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 0 24px;
+            -webkit-font-smoothing: antialiased;
+        }
+        .legal-wrap { max-width: 820px; margin: 0 auto; padding: 64px 0 120px; }
+        .legal-back {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: rgba(255,255,255,.6); text-decoration: none;
+            font-size: 14px; font-weight: 500;
+            margin-bottom: 56px; letter-spacing: .02em; transition: color .2s;
+        }
+        .legal-back:hover { color: var(--fire-glow); }
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(36px, 5.5vw, 64px);
+            font-weight: 800; line-height: 1.06; letter-spacing: -.02em;
+            margin-bottom: 28px;
+            background: linear-gradient(118deg, #d04500 0%, #ff7820 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .legal-intro { font-size: 17px; color: var(--muted); margin-bottom: 56px; max-width: 640px; line-height: 1.6; }
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(24px, 3vw, 32px);
+            font-weight: 700; line-height: 1.18;
+            margin: 64px 0 20px; color: var(--text);
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(232,96,16,.25);
+        }
+        h2:first-of-type { margin-top: 0; }
+        h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px; font-weight: 600; line-height: 1.3;
+            margin: 32px 0 10px; color: var(--text);
+        }
+        p { margin-bottom: 14px; color: var(--muted); }
+        a { color: var(--fire-glow); text-decoration: none; transition: color .2s; word-break: break-word; }
+        a:hover { color: var(--fire-bright); }
+        ul { list-style: none; margin: 0 0 14px; padding-left: 0; }
+        ul li {
+            margin-bottom: 8px; color: var(--muted);
+            padding-left: 18px; position: relative;
+        }
+        ul li::before {
+            content: ""; position: absolute; left: 0; top: 12px;
+            width: 6px; height: 6px; border-radius: 50%;
+            background: rgba(232,96,16,.5);
+        }
+        .legal-toc {
+            margin: 0 0 56px; padding: 20px 24px;
+            border: 1px solid rgba(232,96,16,.22);
+            border-radius: 12px;
+            background: rgba(232,96,16,.04);
+        }
+        .legal-toc h3 { margin-top: 0; font-size: 14px; text-transform: uppercase; letter-spacing: .15em; color: var(--fire-glow); margin-bottom: 12px; }
+        .legal-toc ul li::before { display: none; }
+        .legal-toc ul li { padding-left: 0; }
+        .legal-toc a { color: var(--text); }
+        .legal-toc a:hover { color: var(--fire-glow); }
+        .legal-foot {
+            margin-top: 96px; padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,.05);
+            font-size: 12.5px; color: rgba(255,255,255,.45); font-weight: 300;
+        }
+        @media (max-width: 600px) {
+            .legal-wrap { padding: 48px 0 80px; }
+            .legal-back { margin-bottom: 36px; }
+            h2 { margin-top: 48px; }
+        }
+    </style>
+<style id="pwd-gate-style">
+html.locked, html.locked body { overflow:hidden !important; height:100% !important; }
+html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-events:none !important; }
+#pwd-gate { position:fixed; inset:0; background:#000; z-index:99999; display:flex; align-items:center; justify-content:center; padding:40px; font-family:'Outfit','DM Sans',sans-serif; }
+#pwd-gate .pwd-box { background:linear-gradient(160deg,rgba(78,32,8,.95) 0%,rgba(42,18,6,.92) 38%,rgba(16,8,3,.88) 100%); border:1px solid rgba(232,96,16,.3); border-radius:16px; padding:36px; max-width:360px; width:100%; text-align:center; box-shadow:0 12px 48px rgba(0,0,0,.7); }
+#pwd-gate h1 { font-size:22px; font-weight:500; color:#fff; margin:0 0 8px; letter-spacing:-.3px; font-family:'Outfit',sans-serif; }
+#pwd-gate .pwd-sub { font-size:13px; color:rgba(255,255,255,.6); margin:0 0 24px; font-family:'DM Sans',sans-serif; }
+#pwd-gate input { width:100%; padding:12px 14px; background:rgba(0,0,0,.4); border:1px solid rgba(232,96,16,.3); border-radius:8px; color:#fff; font-family:'Inter',sans-serif; font-size:14px; outline:none; transition:border-color .2s; box-sizing:border-box; }
+#pwd-gate input:focus { border-color:#ff7820; }
+#pwd-gate .err { color:#ff5a30; font-size:12px; margin-top:8px; min-height:16px; opacity:0; transition:opacity .2s; font-family:'DM Sans',sans-serif; }
+#pwd-gate .err.show { opacity:1; }
+#pwd-gate button { margin-top:14px; padding:12px 24px; background:linear-gradient(135deg,#7a2000,#d04800); border:none; border-radius:8px; color:#fff; font-family:'Outfit',sans-serif; font-size:14px; font-weight:600; cursor:pointer; width:100%; transition:transform .2s; }
+#pwd-gate button:hover { transform:translateY(-1px); }
+</style>
+<script>(function(){try{if(sessionStorage.getItem('forge_v5_unlocked')!=='1')document.documentElement.classList.add('locked');}catch(e){document.documentElement.classList.add('locked');}})();</script>
+</head>
+<body>
+<div id="pwd-gate" aria-modal="true" role="dialog" aria-label="Password protected">
+    <div class="pwd-box">
+        <h1>arconsis Forge &mdash; Preview</h1>
+        <p class="pwd-sub">Diese Vorschau ist passwortgesch&uuml;tzt.</p>
+        <input type="password" id="pwd-input" placeholder="Passwort" autocomplete="off" />
+        <div class="err" id="pwd-error">Falsches Passwort</div>
+        <button id="pwd-submit" type="button">Einloggen</button>
+    </div>
+</div>
+<script>(function(){var K='forge_v5_unlocked',P='arconsis',g=document.getElementById('pwd-gate');function ok(){document.documentElement.classList.remove('locked');if(g)g.style.display='none';}if(sessionStorage.getItem(K)==='1'){ok();return;}var i=document.getElementById('pwd-input'),b=document.getElementById('pwd-submit'),e=document.getElementById('pwd-error');function t(){if(i.value===P){try{sessionStorage.setItem(K,'1');}catch(_){}ok();}else{e.classList.add('show');i.value='';i.focus();}}b.addEventListener('click',t);i.addEventListener('keydown',function(ev){if(ev.key==='Enter')t();});setTimeout(function(){i.focus();},50);})();</script>
+
+    <main class="legal-wrap">
+        <a href="arconsis-forge-v5.html" class="legal-back">← Back to arconsis Forge</a>
+
+        <h1>Information Obligation according to Art. 13 GDPR</h1>
+
+        <h2>Name and contact details of the responsible (Art. 13 para. 1 a) GDPR)</h2>
+        <p>arconsis IT-Solutions GmbH<br>Am Storrenacker 8<br>76139 Karlsruhe, Germany<br>E-Mail: <a href="mailto:contact@arconsis.com">contact@arconsis.com</a></p>
+
+        <h2>Name and contact details of the data protection officer (Art. 13 para. 1 b) GDPR)</h2>
+        <p>ENSECUR GmbH<br>Kaiserstr. 86<br>76133 Karlsruhe, Germany<br>Personally responsible: Mr. Thorsten Jordan<br>E-Mail: <a href="mailto:dsb-arconsis@ensecur.de">dsb-arconsis@ensecur.de</a></p>
+
+        <div class="legal-toc">
+            <h3>Quick links</h3>
+            <ul>
+                <li><a href="#interested-parties">For interested parties and customers</a></li>
+                <li><a href="#suppliers">For suppliers and service providers</a></li>
+                <li><a href="#applicants">For applicants</a></li>
+            </ul>
+        </div>
+
+        <h2 id="interested-parties">For interested parties and customers</h2>
+
+        <h3>Purpose and legal basis of data processing (Art. 13 para. 1 c GDPR)</h3>
+        <ul>
+            <li>Handling and processing of inquiries from interested parties (Art. 6 para. 1 sentence 1 lit. f) GDPR)*</li>
+            <li>Sanctions list checks (Art. 6 para. 1 sentence 1 lit. c GDPR in conjunction with Regulation (EC) No. 2580/2001 against other persons and entities suspected of terrorism and Regulation (EC) No. 881/2002 against Osama bin Laden, Al-Qaeda and the Taliban)</li>
+            <li>Preparation of offers for interested parties (Art. 6 para. 1 sentence 1 lit. f) GDPR)*</li>
+            <li>Conclusion of sales contracts (Art. 6 para. 1 sentence 1 lit. f) GDPR)*</li>
+            <li>Fulfillment of legal obligations (Art. 6 para. 1 sentence 1 lit. c) GDPR)</li>
+            <li>Support of operational processes by service providers (Art. 28 GDPR)</li>
+            <li>Order processing and delivery (Art. 6 para. 1 sentence 1 lit. c) GDPR)</li>
+            <li>Processing of complaints (Art. 6 para. 1 sentence 1 lit. c) GDPR)</li>
+            <li>Conducting customer surveys to obtain feedback on the cooperation (Art. 6 para. 1 sentence 1 lit. a) GDPR)</li>
+            <li>Assertion of legal claims and defence in legal disputes</li>
+            <li>Ensuring the IT security and IT operation of the company</li>
+            <li>Crime prevention</li>
+            <li>Measures for business management and further development of services and products</li>
+        </ul>
+        <p style="font-size:14px;color:rgba(255,255,255,.55);">*Interests of the person responsible in balancing interests (Art. 13 para. 1 d) GDPR)</p>
+
+        <h3>Recipients or categories of recipients of personal data (Art. 13 para. 1 e) GDPR)</h3>
+        <p>Authorities, banks, auditors, software manufacturers, affiliated companies, waste disposal service providers.</p>
+
+        <h3>Transfer to third countries (Art. 13 para. 1 f) GDPR)</h3>
+        <p>Any transfers to third countries are described on the section data protection and privacy policy of this website in the information texts of the applications used.</p>
+
+        <h3>Storage period in accordance with statutory storage obligations (Art. 13 para. 2 a) GDPR)</h3>
+        <p>As a rule, personal data is deleted within ten years after termination of the contractual relationship or even earlier if an interested party does not become a customer.</p>
+
+        <h3>Right to information, correction, deletion, restriction, data portability and objection (Art. 13 para. 2 b) GDPR)</h3>
+        <p>As a data subject, you have the right of access, correction and deletion of your data at any time and to restrictions on processing, as well as a right to data portability. Please contact the responsible person under the given contact data.</p>
+
+        <h3>Right to object (Art. 21. para. 1 GDPR)</h3>
+        <p>As far as the processing of your data takes place for the protection of justified interests, you have the right to object to this processing under our indicated contact data at any time, if reasons arise from your special situation, which oppose this data processing. We will then stop this processing unless it serves overriding interests worthy of protection on our part.</p>
+
+        <h3>Right of withdrawal (Art. 13. para. 2 c) GDPR)</h3>
+        <p>If you have consented to the processing of your data, you have the right to revoke this consent at any time for the future. The lawfulness of the processing until the revocation is not affected by this. To do so, please contact the responsible office using the contact details provided.</p>
+
+        <h3>Right to lodge a complaint (Art. 13 para. 2 d) GDPR)</h3>
+        <p>You can contact the State Commissioner for Data Protection and Freedom of Information Officer of Baden-Württemberg in the event of complaints at any time.</p>
+
+        <h3>Requirement to provide personal data (Art. 13 para. 2 e GDPR)</h3>
+        <p>The collected data is necessary for the processing of inquiries from interested parties, for the preparation of offers, the conclusion of purchase contracts or the execution of business operations.</p>
+
+        <h2 id="suppliers">For suppliers and service providers</h2>
+
+        <h3>Purpose and legal basis of data processing (Art. 13 para. 1 c GDPR)</h3>
+        <ul>
+            <li>Purchasing and processing of support services for the fulfilment of business purposes (Art. 6 para. 1 sentence 1 lit. f) GDPR)*</li>
+            <li>Fulfilment of legal obligations (Art. 6 para. 1 sentence 1 lit. c) GDPR)</li>
+            <li>Sending of information material (Art. 6 para. 1 sentence 1 lit. b) GDPR)</li>
+            <li>Assertion of legal claims and defence in legal disputes</li>
+            <li>Ensuring the IT security and IT operation of the company</li>
+            <li>Crime prevention</li>
+            <li>Measures for business management and further development of services and products</li>
+        </ul>
+        <p style="font-size:14px;color:rgba(255,255,255,.55);">*Interests of the person responsible in balancing interests (Art. 13 para. 1 d) GDPR)</p>
+
+        <h3>Recipients or categories of recipients of personal data (Art. 13 para. 1 e) GDPR)</h3>
+        <p>Authorities, banks, auditors, waste management service providers.</p>
+
+        <h3>Transfer to third countries (Art. 13 para. 1 f) GDPR)</h3>
+        <p>There is no transfer of data to third countries.</p>
+
+        <h3>Storage period in accordance with statutory storage obligations (Art. 13 para. 2 a) GDPR)</h3>
+        <p>As a rule, personal data is deleted within ten years after termination of the employment relationship, unless in exceptional cases a longer legal storage period exists or in the event of revocation by an employee.</p>
+
+        <h3>Right to information, correction, deletion, restriction, data portability and objection (Art. 13 para. 2 b) GDPR)</h3>
+        <p>As a data subject, you have the right to information, correction and deletion of your data and to restriction of processing, as well as a right to data portability at any time. For this purpose, please contact the controller using the contact details provided.</p>
+
+        <h3>Right to object (Art. 21. para. 1 GDPR)</h3>
+        <p>As far as the processing of your data takes place for the protection of justified interests, you have the right to object to this processing under our indicated contact data at any time, if reasons arise from your special situation, which oppose this data processing. We will then stop this processing unless it serves overriding interests worthy of protection on our part.</p>
+
+        <h3>Right of withdrawal (Art. 13. para. 2 c) GDPR)</h3>
+        <p>If you have consented to the processing of your data, you have the right to revoke this consent at any time for the future. The lawfulness of the processing until the revocation is not affected by this. To do so, please contact the responsible office using the contact details provided.</p>
+
+        <h3>Right to lodge a complaint (Art. 13 para. 2 d) GDPR)</h3>
+        <p>You can contact the State Commissioner for Data Protection and Freedom of Information Officer of Baden-Württemberg in the event of complaints at any time.</p>
+
+        <h3>Requirement to provide personal data (Art. 13 para. 2 e GDPR)</h3>
+        <p>The collected data is necessary for the processing of inquiries from interested parties, for the preparation of offers, the conclusion of purchase contracts or the execution of business operations.</p>
+
+        <h2 id="applicants">For applicants</h2>
+
+        <h3>Purpose and legal basis of data processing (Art. 13 para. 1 c GDPR)</h3>
+        <ul>
+            <li>Processing of applications/eRecruiting (§ 26 Abs. 1 German Federal Data Protection Law BDSG neu)</li>
+            <li>Inclusion in an applicant pool for subsequent contact (Art. 6 para. 1 a GDPR)</li>
+        </ul>
+
+        <h3>Interests of the person responsible in balancing interests (Art. 13 para. 1 d) GDPR)</h3>
+        <p>Not applicable.</p>
+
+        <h3>Recipients or categories of recipients of personal data (Art. 13 para. 1 e) GDPR)</h3>
+        <p>Personnel service provider, payroll office, provider of the software-supported applicant portal, disposal service provider.</p>
+
+        <h3>Transfer to third countries (Art. 13 para. 1 f) GDPR)</h3>
+        <p>There is no transfer to a third country.</p>
+
+        <h3>Storage period in accordance with statutory storage obligations (Art. 13 para. 2 a) GDPR)</h3>
+        <p>Personal data will be deleted six months after the end of the application process, taking into account Section 61b (1) ArbGG in connection with Section 15 of the German General Act on Equal Treatment (AGG). If the applicant is accepted into the applicant pool, your application will be deleted after 2 years if no suitable position can be offered. If hired, the required data is transferred to the personnel file. The information on the deletion of the data can be taken from the duty to provide information on employee data processing.</p>
+
+        <h3>Right to object (Art. 21. para. 1 GDPR)</h3>
+        <p>As far as the processing of your data takes place for the protection of justified interests, you have the right to object to this processing under our indicated contact data at any time, if reasons arise from your special situation, which oppose this data processing. We will then stop this processing unless it serves overriding interests worthy of protection on our part.</p>
+
+        <h3>Right of withdrawal (Art. 13. para. 2 c) GDPR)</h3>
+        <p>If you have consented to the processing of your data, you have the right to revoke this consent at any time for the future. The lawfulness of the processing until the revocation is not affected by this. To do so, please contact the responsible office using the contact details provided.</p>
+
+        <h3>Right to information, correction, deletion, restriction, data portability and objection (Art. 13 para. 2 b GDPR)</h3>
+        <p>As a data subject, you have the right to information, correction and deletion of your data and to restriction of processing, as well as a right to data portability at any time. For this purpose, please contact the responsible person using the contact details provided.</p>
+
+        <h3>Right to lodge a complaint (Art. 13 para. 2 d) GDPR)</h3>
+        <p>You can contact the State Commissioner for Data Protection and Freedom of Information Officer of Baden-Württemberg in the event of complaints at any time.</p>
+
+        <h3>Requirement to provide personal data (Art. 13 para. 2 e GDPR)</h3>
+        <p>The data collected is required for the implementation of the application process. If it is not provided, it will not be possible to carry out the application procedure.</p>
+
+        <p class="legal-foot">© 2026 arconsis IT-Solutions GmbH. All rights reserved.</p>
+    </main>
+</body>
+</html>
