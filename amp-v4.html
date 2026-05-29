@@ -283,12 +283,13 @@ nav{
         @media(max-width:900px){.hero-amp-logo{height:64px;}}
 
         /* Hero 2-col grid (text left, expert placeholder right) */
-        .hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:64px;align-items:stretch;margin-top:48px;}
+        .hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:88px;align-items:stretch;margin-top:48px;}
         .hero-text{display:flex;flex-direction:column;}
         .hero-text .hero-lead{max-width:none;}
         .hero-text .hero-actions{margin-top:auto;}
-        .hero-expert{animation:fadeUp .7s var(--ease) .6s both;justify-self:end;width:100%;max-width:540px;}
-        .expert-stack{position:relative;width:100%;height:480px;perspective:1400px;overflow:visible;}
+        .hero-expert{animation:fadeUp .7s var(--ease) .6s both;justify-self:end;width:100%;max-width:540px;display:flex;flex-direction:column;gap:24px;}
+        .hero-expert .hero-actions{margin:0;animation:none;justify-content:center;}
+        .expert-stack{position:relative;width:100%;height:440px;perspective:1400px;overflow:visible;}
         .expert-card{position:absolute;left:50%;top:50%;width:280px;aspect-ratio:4/5;margin:-175px 0 0 -140px;border-radius:18px;overflow:hidden;background:linear-gradient(160deg,rgba(78,32,8,.95) 0%,rgba(42,18,6,.92) 38%,rgba(16,8,3,.88) 100%);border:1px solid rgba(232,96,16,.22);cursor:pointer;will-change:transform,opacity,filter;transition:transform 1.0s cubic-bezier(.4,0,.2,1),opacity .8s ease,box-shadow .6s ease,filter .8s ease,border-color .3s ease;}
         .expert-card img{width:100%;height:100%;object-fit:cover;display:block;}
         .expert-card[data-pos="0"]{transform:translateX(0) scale(1);opacity:1;z-index:4;filter:blur(0);box-shadow:0 28px 70px rgba(0,0,0,.7),0 0 0 1px rgba(232,96,16,.22);}
@@ -426,7 +427,6 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
                     <svg width="14" height="14" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h13M8 2l6 5.5L8 13" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     Discovery Workshop
                 </a>
-                <a href="mailto:forge@arconsis.com?subject=AMP%20Talk%20to%20an%20Expert" class="btn btn-ghost">Talk to an Expert</a>
             </div>
         </div>
         <div class="hero-expert" aria-label="Forge experts">
@@ -459,6 +459,9 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
                         <div class="expert-role">arconsis Forge</div>
                     </div>
                 </div>
+            </div>
+            <div class="hero-actions">
+                <a href="mailto:forge@arconsis.com?subject=AMP%20Talk%20to%20an%20Expert" class="btn btn-ghost">Talk to an Expert</a>
             </div>
         </div>
     </div>
