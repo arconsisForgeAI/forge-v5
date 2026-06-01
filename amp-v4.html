@@ -356,13 +356,11 @@ nav{
         .cap-card{background:linear-gradient(160deg,rgba(78,32,8,.95) 0%,rgba(42,18,6,.92) 38%,rgba(16,8,3,.88) 100%);backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);border:1px solid rgba(232,96,16,.22);border-radius:20px;padding:34px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 0 0 1px rgba(255,120,32,.04),0 8px 28px rgba(0,0,0,.6);transition:border-color .3s,transform .3s var(--ease),box-shadow .3s;}
         .cap-card:hover{border-color:rgba(255,120,32,.55);transform:translateY(-3px);box-shadow:0 22px 70px rgba(0,0,0,.75),inset 0 1px 0 rgba(255,255,255,.12),inset 0 0 50px rgba(232,96,16,.10);}
         /* Film-grain (multiply = dunkelt nur, kein Aufhellen) */
-        .gc,.cap-card,.compare-col{position:relative;overflow:hidden;}
+        .compare-col{position:relative;overflow:hidden;}
         .card-grain{position:absolute !important;inset:0 !important;width:auto !important;height:auto !important;border-radius:inherit;overflow:hidden;pointer-events:none;z-index:0 !important;}
         .card-grain::after{content:'';position:absolute;inset:-60%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='fg'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23fg)'/%3E%3C/svg%3E") 0 0/200px 200px;mix-blend-mode:darken;opacity:.5;filter:contrast(2.8) brightness(.95);animation:grainShift .7s steps(8) infinite;will-change:transform;}
-        .gc>*:not(.card-grain),.cap-card>*:not(.card-grain),.compare-col>*:not(.card-grain){position:relative;z-index:2;}
+        .compare-col>*:not(.card-grain){position:relative;z-index:2;}
         @keyframes grainShift{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-8%)}20%{transform:translate(-12%,5%)}30%{transform:translate(6%,-15%)}40%{transform:translate(-4%,14%)}50%{transform:translate(-10%,7%)}60%{transform:translate(9%,-4%)}70%{transform:translate(2%,10%)}80%{transform:translate(4%,18%)}90%{transform:translate(-7%,5%)}}
-        .gc .card-grain::after{opacity:.35;}
-        .cap-card .card-grain::after{opacity:.28;}
         .compare-col .card-grain::after{opacity:.25;}
         @media(prefers-reduced-motion:reduce){.card-grain::after{animation:none;}}
         .cap-card h3{font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.6px;margin-bottom:10px;color:var(--text);}
@@ -850,7 +848,7 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
 
 <script>
 (function(){
-  document.querySelectorAll('.gc, .cap-card, .compare-col').forEach(function(card){
+  document.querySelectorAll('.compare-col').forEach(function(card){
     if(card.querySelector(':scope > .card-grain')) return;
     var g=document.createElement('span'); g.className='card-grain'; g.setAttribute('aria-hidden','true');
     card.insertBefore(g, card.firstChild);
