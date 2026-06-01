@@ -379,6 +379,9 @@ nav{
         .amp-video-wrap{max-width:320px;margin:0 auto;border-radius:18px;overflow:hidden;border:1px solid var(--border-fire);background:#000;position:relative;box-shadow:0 24px 70px rgba(0,0,0,.6),0 0 50px rgba(232,96,16,.10);}
         .amp-video-wrap video{display:block;width:100%;aspect-ratio:9/16;background:#000;}
         .amp-video-cap{margin:24px auto 0;text-align:center;font-size:13px;color:var(--muted-hi);font-weight:300;letter-spacing:.2px;max-width:440px;line-height:1.5;}
+        .amp-reels{display:flex;justify-content:center;align-items:flex-start;gap:40px;flex-wrap:wrap;}
+        .amp-reel{display:flex;flex-direction:column;align-items:center;margin:0;width:320px;max-width:100%;}
+        .amp-reel .amp-video-cap{margin-top:18px;max-width:320px;}
 
         /* FAQ */
         .faq-list{margin-top:48px;border-top:1px solid var(--border);}
@@ -661,12 +664,24 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
 <section class="sw" id="process" aria-label="How AMP works">
     <h2 class="sec-h2">How AMP works.</h2>
     <p class="sec-sub">A structured engagement model from first conversation to handover.</p>
-    <div class="amp-video-wrap">
-        <video controls preload="metadata" playsinline poster="assets/media/patrick-amp-poster.jpg">
-            <source src="assets/media/patrick-amp.mp4" type="video/mp4">
-        </video>
+    <div class="amp-reels">
+        <figure class="amp-reel">
+            <div class="amp-video-wrap">
+                <video controls preload="metadata" playsinline poster="assets/media/patrick-amp-poster.jpg">
+                    <source src="assets/media/patrick-amp.mp4" type="video/mp4">
+                </video>
+            </div>
+            <figcaption class="amp-video-cap">Patrick on harness engineering: why enterprise modernization needs guardrails and tooling around the agent, not just an LLM left to its own devices.</figcaption>
+        </figure>
+        <figure class="amp-reel">
+            <div class="amp-video-wrap">
+                <video controls preload="metadata" playsinline poster="assets/media/patrick-legacy-poster.jpg">
+                    <source src="assets/media/patrick-legacy.mp4" type="video/mp4">
+                </video>
+            </div>
+            <figcaption class="amp-video-cap">Patrick on legacy code: why companies keep postponing modernization until the day it finally breaks.</figcaption>
+        </figure>
     </div>
-    <p class="amp-video-cap">Patrick on harness engineering: why enterprise modernization needs guardrails and tooling around the agent, not just an LLM left to its own devices.</p>
 </section>
 
 <hr class="hr">
