@@ -390,6 +390,19 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
 #pwd-gate .err.show { opacity:1; }
 #pwd-gate button { margin-top:14px; padding:12px 24px; background:linear-gradient(135deg,#7a2000,#d04800); border:none; border-radius:8px; color:#fff; font-family:'Outfit',sans-serif; font-size:14px; font-weight:600; cursor:pointer; width:100%; transition:transform .2s; }
 #pwd-gate button:hover { transform:translateY(-1px); }
+        /* VISION split layout + graphic */
+        .vision-split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+        .vision-split .sec-sub{margin-bottom:0;}
+        .vision-graphic{width:100%;aspect-ratio:3/2;border-radius:20px;overflow:hidden;background:#000;border:1px solid rgba(232,96,16,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 12px 40px rgba(0,0,0,.6);}
+        .vision-graphic img{width:100%;height:100%;object-fit:cover;display:block;}
+        @media(max-width:1024px){.vision-split{grid-template-columns:1fr;gap:36px;}}
+        .vision-text .sec-h2.writeon{font-size:clamp(28px,3.2vw,40px);line-height:1.06;}
+        .vision-split .vision-graphic{order:-1;}
+        @property --wo{syntax:'<percentage>';inherits:false;initial-value:0%;}
+        .writeon .wo-line{display:block;width:fit-content;--wo:0%;-webkit-mask-image:linear-gradient(90deg,#000 calc(var(--wo) - 14%),transparent var(--wo));mask-image:linear-gradient(90deg,#000 calc(var(--wo) - 14%),transparent var(--wo));transition:--wo 1s cubic-bezier(.4,0,.2,1);}
+        .writeon .wo-line + .wo-line{transition-delay:.45s;}
+        .writeon.in-view .wo-line{--wo:114%;}
+        @media(prefers-reduced-motion:reduce){.writeon .wo-line{--wo:114%;transition:none;}}
 </style>
 <script>(function(){try{if(sessionStorage.getItem('forge_v5_unlocked')!=='1')document.documentElement.classList.add('locked');}catch(e){document.documentElement.classList.add('locked');}})();</script>
 </head>
@@ -484,8 +497,15 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
 
 <!-- VISION -->
 <section class="sw" aria-label="The KAP vision">
-    <h2 class="sec-h2">Bring the organisational model<br>of a company to AI agents.</h2>
-    <p class="sec-sub">Kube Agent Platform brings the organisational model of a company to AI agents, and makes it production-ready for Kubernetes. A Kubernetes-native control plane for running AI agents as governed, accountable members of your organisation. Self-hosted. Secure. Policy-driven. Built for enterprise infrastructure from day one.</p>
+    <div class="vision-split">
+        <div class="vision-text">
+            <h2 class="sec-h2 writeon" data-writeon><span class="wo-line">Bring the</span><span class="wo-line">organisational model</span><span class="wo-line">of a company</span><span class="wo-line">to AI agents.</span></h2>
+            <p class="sec-sub">Kube Agent Platform brings the organisational model of a company to AI agents, and makes it production-ready for Kubernetes. A Kubernetes-native control plane for running AI agents as governed, accountable members of your organisation. Self-hosted. Secure. Policy-driven. Built for enterprise infrastructure from day one.</p>
+        </div>
+        <div class="vision-graphic">
+            <img alt="An organizational hierarchy of AI agents running on Kubernetes" src="assets/kap-vision.png">
+        </div>
+    </div>
 </section>
 
 <hr class="hr">
@@ -587,6 +607,7 @@ if(hbg&&mob){
 }
 const ro=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}}),{threshold:0.07,rootMargin:'0px 0px -28px 0px'});
 document.querySelectorAll('[data-reveal],[data-rs]').forEach(el=>ro.observe(el));
+(function(){var wels=document.querySelectorAll('[data-writeon]');if(!wels.length)return;if(!('IntersectionObserver' in window)){wels.forEach(function(e){e.classList.add('in-view');});return;}var wio=new IntersectionObserver(function(ents){ents.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in-view');wio.unobserve(en.target);}});},{threshold:.35});wels.forEach(function(e){wio.observe(e);});})();
 const cg=document.getElementById('cglow');let cx=0,cy=0,tx=0,ty=0;
 document.addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;cg.style.opacity='1';});
 document.addEventListener('mouseleave',()=>cg.style.opacity='0');
