@@ -376,7 +376,7 @@ nav{
         .stub{margin-top:48px;padding:64px 48px;border:1px dashed rgba(255,120,32,.55);border-radius:20px;text-align:center;background:linear-gradient(160deg,rgba(78,32,8,.95) 0%,rgba(42,18,6,.92) 38%,rgba(16,8,3,.88) 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 0 0 1px rgba(255,120,32,.04),0 8px 28px rgba(0,0,0,.6);}
         .stub-label{font-size:11px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--fire-mid);margin-bottom:16px;}
         .stub p{font-size:15px;color:var(--muted-hi);font-weight:300;max-width:560px;margin:0 auto;line-height:1.6;}
-        .amp-video-wrap{max-width:380px;margin:0 auto;border-radius:18px;overflow:hidden;border:1px solid var(--border-fire);background:#000;position:relative;box-shadow:0 24px 70px rgba(0,0,0,.6),0 0 50px rgba(232,96,16,.10);}
+        .amp-video-wrap{max-width:320px;margin:0 auto;border-radius:18px;overflow:hidden;border:1px solid var(--border-fire);background:#000;position:relative;box-shadow:0 24px 70px rgba(0,0,0,.6),0 0 50px rgba(232,96,16,.10);}
         .amp-video-wrap video{display:block;width:100%;aspect-ratio:9/16;background:#000;}
         .amp-video-cap{margin:24px auto 0;text-align:center;font-size:13px;color:var(--muted-hi);font-weight:300;letter-spacing:.2px;max-width:440px;line-height:1.5;}
 
@@ -394,7 +394,16 @@ nav{
         .faq-item .faq-answer ul{list-style:none;padding:0;margin:10px 0 16px;}
         .faq-item .faq-answer ul li{padding:6px 0 6px 22px;position:relative;}
         .faq-item .faq-answer ul li::before{content:'';position:absolute;left:0;top:16px;width:10px;height:1px;background:var(--fire-glow);}
-    </style>
+            /* Scale-Pfeil hinter den Vergleichs-Cards */
+        section[aria-label="Traditional and agentic modernization compared"]{position:relative;}
+        .scale-fx{position:absolute;left:62%;top:40%;width:min(540px,62%);aspect-ratio:1/1;transform:translate(-50%,-50%);z-index:0;pointer-events:none;opacity:.6;filter:drop-shadow(0 0 20px rgba(232,96,16,.4));}
+        .stock-line{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.6s cubic-bezier(.45,0,.2,1);}
+        .scale-fx.in-view .stock-line{stroke-dashoffset:0;}
+        @media(prefers-reduced-motion:reduce){.stock-line{stroke-dashoffset:0;transition:none;}}
+        .scale-fx svg{width:100%;height:100%;display:block;}
+        .compare-grid{position:relative;z-index:1;}
+        @media(prefers-reduced-motion:reduce){.scale-fx{opacity:.4;}}
+</style>
 <style id="pwd-gate-style">
 html.locked, html.locked body { overflow:hidden !important; height:100% !important; }
 html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-events:none !important; }
@@ -535,6 +544,19 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
 
 <!-- MODERNIZATION CAN FINALLY SCALE -->
 <section class="sw" aria-label="Traditional and agentic modernization compared">
+    <div class="scale-fx" aria-hidden="true">
+        <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet">
+            <defs>
+                <linearGradient id="scaleArrow" x1="0" y1="1" x2="0" y2="0">
+                    <stop offset="0" stop-color="#7a2000" stop-opacity="0"/>
+                    <stop offset="0.28" stop-color="#d04500" stop-opacity="0.85"/>
+                    <stop offset="1" stop-color="#ff7820"/>
+                </linearGradient>
+            </defs>
+            <path class="stock-line" pathLength="1" d="M60 500 L140 440 L200 470 L280 360 L340 400 L420 280 L480 320 L560 140 L510 152 M560 140 L546 196"
+                  fill="none" stroke="url(#scaleArrow)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
     <h2 class="sec-h2">Modernization can finally scale.</h2>
     <p class="sec-sub">AI agents fundamentally change modernization economics. AMP combines deterministic transformations, rule-based automation, and AI-supported workflows. Human teams remain accountable for architecture, governance, and business-critical decisions.</p>
     <div class="compare-grid">
@@ -907,16 +929,13 @@ document.querySelectorAll('.feat-item').forEach(item=>{
 (function(){
   var grid=document.querySelector('.compare-grid');
   if(!grid) return;
-  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    grid.classList.add('in-view');return;
-  }
-  if(!('IntersectionObserver' in window)){ grid.classList.add('in-view'); return; }
+  var fx=document.querySelector('.scale-fx');
+  function reveal(){ grid.classList.add('in-view'); if(fx)fx.classList.add('in-view'); }
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){ reveal();return; }
+  if(!('IntersectionObserver' in window)){ reveal(); return; }
   var io=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      if(e.isIntersecting){
-        grid.classList.add('in-view');
-        io.unobserve(e.target);
-      }
+      if(e.isIntersecting){ reveal(); io.unobserve(e.target); }
     });
   },{threshold:0.25});
   io.observe(grid);
