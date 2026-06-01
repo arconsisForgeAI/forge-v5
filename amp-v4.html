@@ -147,7 +147,8 @@ nav{
         .arch-connector{display:flex;align-items:center;justify-content:center;padding:0 4px;color:var(--muted);font-size:12px;}
         /* COMPARISON */
         .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:56px;}
-        .compare-col{background:linear-gradient(160deg,rgba(78,32,8,.95) 0%,rgba(42,18,6,.92) 38%,rgba(16,8,3,.88) 100%);border:1px solid rgba(232,96,16,.22);border-radius:20px;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 0 0 1px rgba(255,120,32,.04),0 8px 28px rgba(0,0,0,.6);}
+        .compare-col{background:linear-gradient(160deg,rgba(78,32,8,.95) 0%,rgba(42,18,6,.92) 38%,rgba(16,8,3,.88) 100%);border:1px solid rgba(232,96,16,.22);border-radius:20px;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 0 0 1px rgba(255,120,32,.04),0 8px 28px rgba(0,0,0,.6);transition:transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s ease,border-color .35s ease;}
+        .compare-col:hover{transform:translateY(-5px);border-color:rgba(232,96,16,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 16px 44px rgba(0,0,0,.7),0 0 30px rgba(232,96,16,.18);}
         .compare-col-fire{border-color:rgba(232,96,16,.40);}
         .compare-header{padding:24px 28px;border-bottom:1px solid rgba(232,96,16,.15);background:linear-gradient(180deg,rgba(255,140,50,.07) 0%,transparent 100%);}
         .compare-col-fire .compare-header{background:linear-gradient(180deg,rgba(255,140,50,.16) 0%,transparent 100%);border-bottom-color:rgba(232,96,16,.22);}
@@ -168,10 +169,14 @@ nav{
         .compare-grid.in-view .compare-col-trad .compare-row:nth-child(3){transition-delay:2.5s;}
         .compare-grid.in-view .compare-col-trad .compare-row:nth-child(4){transition-delay:3.5s;}
         .compare-grid.in-view .compare-col-trad .compare-row:nth-child(5){transition-delay:4.5s;}
-        @media (prefers-reduced-motion: reduce){.compare-grid .compare-row{transition:none!important;opacity:1!important;transform:none!important;}}
+        @media (prefers-reduced-motion: reduce){.compare-grid .compare-row{transition:none!important;opacity:1!important;transform:none!important;}.compare-col:hover{transform:none;}.compare-row:hover .compare-check,.compare-row:hover .compare-text{transform:none;}}
         .compare-row:last-child{border-bottom:none;}
-        .compare-check{flex-shrink:0;margin-top:2px;}
-        .compare-text{font-size:15.5px;color:var(--muted-hi);line-height:1.55;font-weight:300;}
+        .compare-check{flex-shrink:0;margin-top:2px;transition:transform .3s cubic-bezier(.34,1.4,.5,1);}
+        .compare-text{font-size:15.5px;color:var(--muted-hi);line-height:1.55;font-weight:300;transition:transform .3s cubic-bezier(.34,1.4,.5,1),color .3s ease;}
+        .compare-row{border-radius:10px;padding-left:8px;padding-right:8px;margin-left:-8px;margin-right:-8px;transition:opacity .5s ease-out,transform .5s cubic-bezier(.4,0,.2,1),background .3s ease;}
+        .compare-row:hover{background:linear-gradient(90deg,rgba(232,96,16,.12),rgba(232,96,16,.02));}
+        .compare-row:hover .compare-check{transform:scale(1.3);}
+        .compare-row:hover .compare-text{transform:translateX(4px);color:#fff;}
         /* SCROLLBAR */
         ::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:#000;}
         ::-webkit-scrollbar-thumb{background:#1a0a02;border-radius:2px;}::-webkit-scrollbar-thumb:hover{background:var(--fire-mid);}
@@ -725,7 +730,7 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
                 <svg width="14" height="14" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h13M8 2l6 5.5L8 13" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 Discovery Workshop
             </a>
-            <a href="mailto:forge@arconsis.com?subject=AMP%20Talk%20to%20an%20Expert" class="btn btn-ghost">Talk to an Expert</a>
+            <a href="mailto:forge@arconsis.com?subject=AMP%20Talk%20to%20an%20Expert" data-book class="btn btn-ghost">Talk to an Expert</a>
         </div>
     </div>
 </div>
