@@ -147,7 +147,7 @@ nav{
         .arch-connector{display:flex;align-items:center;justify-content:center;padding:0 4px;color:var(--muted);font-size:12px;}
         /* COMPARISON */
         .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:56px;}
-        .compare-col{background:linear-gradient(160deg,rgba(78,32,8,.95) 0%,rgba(42,18,6,.92) 38%,rgba(16,8,3,.88) 100%);border:1px solid rgba(232,96,16,.22);border-radius:20px;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 0 0 1px rgba(255,120,32,.04),0 8px 28px rgba(0,0,0,.6);transition:transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s ease,border-color .35s ease;}
+        .compare-col{background:linear-gradient(160deg,rgba(78,32,8,.62) 0%,rgba(42,18,6,.54) 38%,rgba(16,8,3,.46) 100%);border:1px solid rgba(232,96,16,.22);border-radius:20px;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 0 0 1px rgba(255,120,32,.04),0 8px 28px rgba(0,0,0,.6);transition:transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s ease,border-color .35s ease;}
         .compare-col:hover{transform:translateY(-5px);border-color:rgba(232,96,16,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 16px 44px rgba(0,0,0,.7),0 0 30px rgba(232,96,16,.18);}
         .compare-col-fire{border-color:rgba(232,96,16,.40);}
         .compare-header{padding:24px 28px;border-bottom:1px solid rgba(232,96,16,.15);background:linear-gradient(180deg,rgba(255,140,50,.07) 0%,transparent 100%);}
@@ -399,13 +399,13 @@ nav{
         .faq-item .faq-answer ul li::before{content:'';position:absolute;left:0;top:16px;width:10px;height:1px;background:var(--fire-glow);}
             /* Scale-Pfeil hinter den Vergleichs-Cards */
         section[aria-label="Traditional and agentic modernization compared"]{position:relative;}
-        .scale-fx{position:absolute;left:62%;top:40%;width:min(540px,62%);aspect-ratio:1/1;transform:translate(-50%,-50%);z-index:0;pointer-events:none;opacity:.6;filter:drop-shadow(0 0 20px rgba(232,96,16,.4));}
-        .stock-line{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.6s cubic-bezier(.45,0,.2,1);}
-        .scale-fx.in-view .stock-line{stroke-dashoffset:0;}
-        @media(prefers-reduced-motion:reduce){.stock-line{stroke-dashoffset:0;transition:none;}}
+        .scale-fx{position:absolute;left:50%;top:24%;bottom:5%;transform:translateX(-50%);width:min(1120px,94%);z-index:0;pointer-events:none;opacity:.5;display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(4px,0.9%,12px);-webkit-mask-image:linear-gradient(to top,transparent 0%,#000 50%);mask-image:linear-gradient(to top,transparent 0%,#000 50%);}
+        .scale-bar{flex:1;height:var(--h);border-radius:5px 5px 0 0;background:linear-gradient(180deg,#b83c00 0%,#7a2000 55%,#4a1400 100%);box-shadow:0 0 16px rgba(180,60,0,.35);transform:scaleY(0);transform-origin:bottom;transition:transform .9s cubic-bezier(.22,1,.36,1);}
+        .scale-fx.in-view .scale-bar{transform:scaleY(1);}
+        .scale-fx .scale-bar:nth-child(1){transition-delay:0.00s}.scale-fx .scale-bar:nth-child(2){transition-delay:0.06s}.scale-fx .scale-bar:nth-child(3){transition-delay:0.12s}.scale-fx .scale-bar:nth-child(4){transition-delay:0.18s}.scale-fx .scale-bar:nth-child(5){transition-delay:0.24s}.scale-fx .scale-bar:nth-child(6){transition-delay:0.30s}.scale-fx .scale-bar:nth-child(7){transition-delay:0.36s}.scale-fx .scale-bar:nth-child(8){transition-delay:0.42s}.scale-fx .scale-bar:nth-child(9){transition-delay:0.48s}.scale-fx .scale-bar:nth-child(10){transition-delay:0.54s}.scale-fx .scale-bar:nth-child(11){transition-delay:0.60s}.scale-fx .scale-bar:nth-child(12){transition-delay:0.66s}
+        @media(prefers-reduced-motion:reduce){.scale-bar{transform:scaleY(1);transition:none;}}
         .scale-fx svg{width:100%;height:100%;display:block;}
         .compare-grid{position:relative;z-index:1;}
-        @media(prefers-reduced-motion:reduce){.scale-fx{opacity:.4;}}
 </style>
 <style id="pwd-gate-style">
 html.locked, html.locked body { overflow:hidden !important; height:100% !important; }
@@ -548,17 +548,18 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
 <!-- MODERNIZATION CAN FINALLY SCALE -->
 <section class="sw" aria-label="Traditional and agentic modernization compared">
     <div class="scale-fx" aria-hidden="true">
-        <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet">
-            <defs>
-                <linearGradient id="scaleArrow" x1="0" y1="1" x2="0" y2="0">
-                    <stop offset="0" stop-color="#7a2000" stop-opacity="0"/>
-                    <stop offset="0.28" stop-color="#d04500" stop-opacity="0.85"/>
-                    <stop offset="1" stop-color="#ff7820"/>
-                </linearGradient>
-            </defs>
-            <path class="stock-line" pathLength="1" d="M60 500 L140 440 L200 470 L280 360 L340 400 L420 280 L480 320 L560 140 L510 152 M560 140 L546 196"
-                  fill="none" stroke="url(#scaleArrow)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <span class="scale-bar" style="--h:16%"></span>
+        <span class="scale-bar" style="--h:22%"></span>
+        <span class="scale-bar" style="--h:28%"></span>
+        <span class="scale-bar" style="--h:35%"></span>
+        <span class="scale-bar" style="--h:43%"></span>
+        <span class="scale-bar" style="--h:51%"></span>
+        <span class="scale-bar" style="--h:59%"></span>
+        <span class="scale-bar" style="--h:67%"></span>
+        <span class="scale-bar" style="--h:75%"></span>
+        <span class="scale-bar" style="--h:83%"></span>
+        <span class="scale-bar" style="--h:92%"></span>
+        <span class="scale-bar" style="--h:100%"></span>
     </div>
     <h2 class="sec-h2">Modernization can finally scale.</h2>
     <p class="sec-sub">AI agents fundamentally change modernization economics. AMP combines deterministic transformations, rule-based automation, and AI-supported workflows. Human teams remain accountable for architecture, governance, and business-critical decisions.</p>
