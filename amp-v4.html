@@ -111,6 +111,12 @@ nav{
         .hr{border:none;height:1px;background:var(--border);max-width:calc(100% - 104px);margin:0 auto;position:relative;z-index:2;}
         .eyebrow{font-size:11px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--fire-mid);margin-bottom:14px;display:block;}
         .sec-h2{font-family:'Outfit',sans-serif;font-size:clamp(32px,4.2vw,52px);font-weight:800;line-height:1.08;letter-spacing:-1.8px;text-wrap:balance;}
+        /* Write-on reveal (Headline schreibt sich von links) */
+        @property --wo{syntax:'<percentage>';inherits:false;initial-value:0%;}
+        .writeon .wo-line{display:block;width:fit-content;--wo:0%;-webkit-mask-image:linear-gradient(90deg,#000 calc(var(--wo) - 14%),transparent var(--wo));mask-image:linear-gradient(90deg,#000 calc(var(--wo) - 14%),transparent var(--wo));transition:--wo 1s cubic-bezier(.4,0,.2,1);}
+        .writeon .wo-line + .wo-line{transition-delay:.45s;}
+        .writeon.in-view .wo-line{--wo:114%;}
+        @media(prefers-reduced-motion:reduce){.writeon .wo-line{--wo:114%;transition:none;}}
         .sec-sub{font-size:clamp(16px,1.6vw,18px);color:var(--muted-hi);line-height:1.78;font-weight:300;max-width:620px;margin-top:14px;margin-bottom:56px;letter-spacing:-.1px;}
         /* GLASS CARD */
         .gc{background:linear-gradient(160deg,rgba(78,32,8,.95) 0%,rgba(42,18,6,.92) 38%,rgba(16,8,3,.88) 100%);backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);border:1px solid rgba(232,96,16,.22);border-radius:20px;position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 0 0 1px rgba(255,120,32,.04),0 8px 28px rgba(0,0,0,.6);transition:transform .38s var(--ease),border-color .3s,box-shadow .38s var(--ease);}
@@ -146,21 +152,23 @@ nav{
         .compare-header{padding:24px 28px;border-bottom:1px solid rgba(232,96,16,.15);background:linear-gradient(180deg,rgba(255,140,50,.07) 0%,transparent 100%);}
         .compare-col-fire .compare-header{background:linear-gradient(180deg,rgba(255,140,50,.16) 0%,transparent 100%);border-bottom-color:rgba(232,96,16,.22);}
         .compare-header h3{font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;letter-spacing:-.3px;margin-bottom:4px;}
-        .compare-header p{font-size:13px;color:var(--muted);font-weight:300;}
+        .compare-header p{font-size:15px;color:var(--muted);font-weight:300;}
         .compare-body{padding:20px 28px;}
-        .compare-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.03);opacity:0;}
-        .compare-col .compare-row{transform:translateX(-22px);transition:opacity 1.4s ease-out, transform 1.4s cubic-bezier(.4,0,.2,1);}
-        .compare-col-fire .compare-row{transform:translateX(0);transition:opacity .30s ease, transform .30s ease;}
-        .compare-grid.in-view .compare-row{opacity:1;transform:translateX(0);}
-        /* Agentic — all 5 appear together at 0.15s, done by 0.45s */
-        .compare-grid.in-view .compare-col-fire .compare-row{transition-delay:.15s;}
-        /* Traditional — long slow drip, 1.4s gap per item, ~8s total */
-        .compare-grid.in-view .compare-col .compare-row:nth-child(1){transition-delay:1.40s;}
-        .compare-grid.in-view .compare-col .compare-row:nth-child(2){transition-delay:2.80s;}
-        .compare-grid.in-view .compare-col .compare-row:nth-child(3){transition-delay:4.20s;}
-        .compare-grid.in-view .compare-col .compare-row:nth-child(4){transition-delay:5.60s;}
-        .compare-grid.in-view .compare-col .compare-row:nth-child(5){transition-delay:7.00s;}
-        @media (prefers-reduced-motion: reduce){.compare-row{opacity:1;transform:none;transition:none;}}
+        .compare-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.03);opacity:0;transform:translateY(10px);transition:opacity .5s ease-out, transform .5s cubic-bezier(.4,0,.2,1);}
+        .compare-grid.in-view .compare-row{opacity:1;transform:translateY(0);}
+        /* AI/agentic (links): alle Punkte bis ~2,5s */
+        .compare-grid.in-view .compare-col-fire .compare-row:nth-child(1){transition-delay:0s;}
+        .compare-grid.in-view .compare-col-fire .compare-row:nth-child(2){transition-delay:.5s;}
+        .compare-grid.in-view .compare-col-fire .compare-row:nth-child(3){transition-delay:1s;}
+        .compare-grid.in-view .compare-col-fire .compare-row:nth-child(4){transition-delay:1.5s;}
+        .compare-grid.in-view .compare-col-fire .compare-row:nth-child(5){transition-delay:2s;}
+        /* Traditional (rechts): tröpfelt bis ~5s */
+        .compare-grid.in-view .compare-col-trad .compare-row:nth-child(1){transition-delay:.5s;}
+        .compare-grid.in-view .compare-col-trad .compare-row:nth-child(2){transition-delay:1.5s;}
+        .compare-grid.in-view .compare-col-trad .compare-row:nth-child(3){transition-delay:2.5s;}
+        .compare-grid.in-view .compare-col-trad .compare-row:nth-child(4){transition-delay:3.5s;}
+        .compare-grid.in-view .compare-col-trad .compare-row:nth-child(5){transition-delay:4.5s;}
+        @media (prefers-reduced-motion: reduce){.compare-grid .compare-row{transition:none!important;opacity:1!important;transform:none!important;}}
         .compare-row:last-child{border-bottom:none;}
         .compare-check{flex-shrink:0;margin-top:2px;}
         .compare-text{font-size:15.5px;color:var(--muted-hi);line-height:1.55;font-weight:300;}
@@ -315,6 +323,19 @@ nav{
         .expert-card-meta{position:absolute;bottom:0;left:0;right:0;padding:42px 20px 16px;background:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.82) 75%);}
         .expert-name{font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;color:#fff;letter-spacing:-.2px;line-height:1.2;}
         .expert-role{font-family:'DM Sans',sans-serif;font-size:11.5px;font-weight:400;color:rgba(255,255,255,.7);letter-spacing:.02em;margin-top:3px;}
+        .exp-cta-wrap{width:100%;text-align:center;margin-top:24px;}
+        .exp-cta-link{display:inline-flex;align-items:center;gap:8px;font-family:'Outfit',sans-serif;font-weight:600;font-size:17px;letter-spacing:-.2px;color:var(--fire-glow);text-decoration:none;transition:gap .22s var(--ease),color .22s;}
+        .exp-cta-link:hover{gap:13px;color:var(--fire-bright);}
+        .exp-cta-link svg{width:14px;height:14px;}
+        /* Booking-Popup (Microsoft Bookings im iFrame) */
+        .bk-modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;transition:opacity .28s ease;}
+        .bk-modal.open{display:flex;opacity:1;}
+        .bk-dialog{position:relative;width:100%;max-width:1000px;height:min(86vh,860px);background:var(--surface);border:1px solid rgba(232,96,16,.34);border-radius:18px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.7),0 0 60px rgba(232,96,16,.12);transform:translateY(14px) scale(.985);transition:transform .3s cubic-bezier(.4,0,.2,1);}
+        .bk-modal.open .bk-dialog{transform:none;}
+        .bk-close{position:absolute;top:12px;right:12px;z-index:2;width:40px;height:40px;border-radius:10px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.55);color:#fff;font:400 22px/1 'Outfit',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s,transform .2s;}
+        .bk-close:hover{background:rgba(255,120,32,.22);border-color:rgba(255,120,32,.55);transform:scale(1.05);}
+        .bk-iframe{width:100%;height:100%;border:0;display:block;background:#fff;}
+        @media(max-width:600px){.bk-dialog{height:90vh;border-radius:14px;}}
         @media (prefers-reduced-motion: reduce){.expert-card{transition:none;}}
         @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:36px;}.hero-expert{justify-self:start;max-width:none;}.expert-card[data-pos="1"]{transform:translateX(170px) scale(.78);}.expert-card[data-pos="3"]{transform:translateX(-170px) scale(.78);}}
 
@@ -381,7 +402,6 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
 #pwd-gate button:hover { transform:translateY(-1px); }
 </style>
 <script>(function(){try{if(sessionStorage.getItem('forge_v5_unlocked')!=='1')document.documentElement.classList.add('locked');}catch(e){document.documentElement.classList.add('locked');}})();</script>
-
 </head>
 <body>
 <div id="pwd-gate" aria-modal="true" role="dialog" aria-label="Password protected">
@@ -394,7 +414,6 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
     </div>
 </div>
 <script>(function(){var K='forge_v5_unlocked',P='arconsis',g=document.getElementById('pwd-gate');function ok(){document.documentElement.classList.remove('locked');if(g)g.style.display='none';}if(sessionStorage.getItem(K)==='1'){ok();return;}var i=document.getElementById('pwd-input'),b=document.getElementById('pwd-submit'),e=document.getElementById('pwd-error');function t(){if(i.value===P){try{sessionStorage.setItem(K,'1');}catch(_){}ok();}else{e.classList.add('show');i.value='';i.focus();}}b.addEventListener('click',t);i.addEventListener('keydown',function(ev){if(ev.key==='Enter')t();});setTimeout(function(){i.focus();},50);})();</script>
-
 <a href="#main-content" class="sr-only">Zum Hauptinhalt springen</a>
 
 <div id="aurora"><div class="blob blob-1"></div><div class="blob blob-2"></div></div>
@@ -438,7 +457,6 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
                     <svg width="14" height="14" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h13M8 2l6 5.5L8 13" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     Discovery Workshop
                 </a>
-                <a href="mailto:forge@arconsis.com?subject=AMP%20Talk%20to%20an%20Expert" class="btn btn-ghost">Talk to an Expert</a>
             </div>
         </div>
         <div class="hero-expert" aria-label="Forge experts">
@@ -472,6 +490,9 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
                     </div>
                 </div>
             </div>
+            <div class="exp-cta-wrap">
+                <a href="mailto:forge@arconsis.com?subject=AMP%20Talk%20to%20an%20Expert" data-book class="exp-cta-link">Talk to one of our experts <svg viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h13M8 2l6 5.5L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
         </div>
     </div>
 </section>
@@ -480,7 +501,7 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
 
 <!-- WHY MODERNIZATION MATTERS -->
 <section class="sw" id="why" aria-label="Why modernization matters">
-    <h2 class="sec-h2">Why modernization matters,<br>and why it rarely happens.</h2>
+    <h2 class="sec-h2 writeon" data-writeon><span class="wo-line">Why modernization matters,</span><span class="wo-line">and why it rarely happens.</span></h2>
     <p class="sec-sub">Most modernization initiatives stall before value is delivered. Organizations know modernization is necessary. Operational risk, fragmented systems, budget uncertainty, and lack of internal capacity often delay execution for years.</p>
     <div class="problem-grid">
         <article class="gc">
@@ -509,19 +530,6 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
     <h2 class="sec-h2">Modernization can finally scale.</h2>
     <p class="sec-sub">AI agents fundamentally change modernization economics. AMP combines deterministic transformations, rule-based automation, and AI-supported workflows. Human teams remain accountable for architecture, governance, and business-critical decisions.</p>
     <div class="compare-grid">
-        <div class="compare-col">
-            <div class="compare-header">
-                <h3>Traditional modernization</h3>
-                <p>Manual, slow, expensive.</p>
-            </div>
-            <div class="compare-body">
-            <div class="compare-row"><svg class="compare-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="3" stroke="rgba(255,255,255,.32)" stroke-width="1.4" fill="none"/></svg><span class="compare-text">Slow system and dependency analysis</span></div>
-            <div class="compare-row"><svg class="compare-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="3" stroke="rgba(255,255,255,.32)" stroke-width="1.4" fill="none"/></svg><span class="compare-text">Manual refactoring and migration execution</span></div>
-            <div class="compare-row"><svg class="compare-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="3" stroke="rgba(255,255,255,.32)" stroke-width="1.4" fill="none"/></svg><span class="compare-text">Expensive and repetitive documentation efforts</span></div>
-            <div class="compare-row"><svg class="compare-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="3" stroke="rgba(255,255,255,.32)" stroke-width="1.4" fill="none"/></svg><span class="compare-text">Difficult harmonization across heterogeneous systems</span></div>
-            <div class="compare-row"><svg class="compare-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="3" stroke="rgba(255,255,255,.32)" stroke-width="1.4" fill="none"/></svg><span class="compare-text">Long delivery and validation cycles</span></div>
-            </div>
-        </div>
         <div class="compare-col compare-col-fire">
             <div class="compare-header">
                 <h3>Agentic modernization</h3>
@@ -533,6 +541,19 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
             <div class="compare-row"><svg class="compare-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="#e86010" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="compare-text">Automated generation of technical documentation</span></div>
             <div class="compare-row"><svg class="compare-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="#e86010" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="compare-text">Scalable harmonization across applications and platforms</span></div>
             <div class="compare-row"><svg class="compare-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="#e86010" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="compare-text">Faster iteration and modernization cycles</span></div>
+            </div>
+        </div>
+        <div class="compare-col compare-col-trad">
+            <div class="compare-header">
+                <h3>Traditional modernization</h3>
+                <p>Manual, slow, expensive.</p>
+            </div>
+            <div class="compare-body">
+            <div class="compare-row"><svg class="compare-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="3" stroke="rgba(255,255,255,.32)" stroke-width="1.4" fill="none"/></svg><span class="compare-text">Slow system and dependency analysis</span></div>
+            <div class="compare-row"><svg class="compare-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="3" stroke="rgba(255,255,255,.32)" stroke-width="1.4" fill="none"/></svg><span class="compare-text">Manual refactoring and migration execution</span></div>
+            <div class="compare-row"><svg class="compare-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="3" stroke="rgba(255,255,255,.32)" stroke-width="1.4" fill="none"/></svg><span class="compare-text">Expensive and repetitive documentation efforts</span></div>
+            <div class="compare-row"><svg class="compare-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="3" stroke="rgba(255,255,255,.32)" stroke-width="1.4" fill="none"/></svg><span class="compare-text">Difficult harmonization across heterogeneous systems</span></div>
+            <div class="compare-row"><svg class="compare-check" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="3" stroke="rgba(255,255,255,.32)" stroke-width="1.4" fill="none"/></svg><span class="compare-text">Long delivery and validation cycles</span></div>
             </div>
         </div>
     </div>
@@ -889,6 +910,49 @@ document.querySelectorAll('.feat-item').forEach(item=>{
     });
   },{threshold:0.25});
   io.observe(grid);
+})();
+</script>
+<script>
+(function(){
+  var els=document.querySelectorAll('[data-writeon]');
+  if(!els.length) return;
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in-view');});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in-view'); io.unobserve(en.target); } });
+  },{threshold:.35});
+  els.forEach(function(e){io.observe(e);});
+})();
+</script>
+<!-- Booking-Popup -->
+<div class="bk-modal" id="bookingModal" role="dialog" aria-modal="true" aria-label="Talk to an expert: book a time">
+  <div class="bk-dialog">
+    <button class="bk-close" type="button" aria-label="Close booking dialog" data-bk-close>×</button>
+    <iframe class="bk-iframe" title="Book a time with a Forge expert" data-bk-src="https://outlook.office.com/book/Talktoanexpert@arconsis.com/" loading="lazy"></iframe>
+  </div>
+</div>
+<script>
+(function(){
+  var modal=document.getElementById('bookingModal');
+  if(!modal) return;
+  var iframe=modal.querySelector('[data-bk-src]'), loaded=false, lastFocus=null;
+  function open(){
+    if(!loaded){ iframe.src=iframe.getAttribute('data-bk-src'); loaded=true; }
+    lastFocus=document.activeElement;
+    modal.classList.add('open');
+    document.body.style.overflow='hidden';
+    var c=modal.querySelector('[data-bk-close]'); if(c) c.focus();
+  }
+  function close(){
+    modal.classList.remove('open');
+    document.body.style.overflow='';
+    if(lastFocus&&lastFocus.focus) lastFocus.focus();
+  }
+  document.querySelectorAll('[data-book]').forEach(function(el){
+    el.addEventListener('click',function(e){ e.preventDefault(); open(); });
+  });
+  modal.addEventListener('click',function(e){ if(e.target===modal) close(); });
+  modal.querySelectorAll('[data-bk-close]').forEach(function(b){ b.addEventListener('click',close); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&modal.classList.contains('open')) close(); });
 })();
 </script>
 </body>
