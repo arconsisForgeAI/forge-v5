@@ -382,6 +382,25 @@ nav{
         .amp-reels{display:flex;justify-content:center;align-items:flex-start;gap:40px;flex-wrap:wrap;}
         .amp-reel{display:flex;flex-direction:column;align-items:center;margin:0;width:320px;max-width:100%;}
         .amp-reel .amp-video-cap{margin-top:18px;max-width:320px;}
+        /* CASE STUDIES */
+        .cs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px;}
+        .cs-card{display:flex;flex-direction:column;gap:14px;padding:32px 28px;}
+        .cs-sector{font-family:'Outfit',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.4px;color:var(--text);margin:0;position:relative;z-index:1;}
+        .cs-desc{font-size:14px;line-height:1.6;color:var(--muted-hi);font-weight:300;margin:0;flex:1;position:relative;z-index:1;}
+        .cs-metric{margin-top:8px;padding-top:18px;border-top:1px solid rgba(232,96,16,.20);position:relative;z-index:1;}
+        .cs-metric-num{font-family:'Outfit',sans-serif;font-weight:800;font-size:34px;line-height:1;color:var(--fire-bright);letter-spacing:-1px;}
+        .cs-metric-label{font-size:12px;color:var(--muted-hi);margin-top:6px;letter-spacing:.3px;}
+        /* Floating Case-Studies-Link */
+        .cs-float{position:fixed;right:24px;bottom:24px;z-index:150;display:flex;align-items:center;gap:12px;padding:13px 18px;border-radius:14px;text-decoration:none;background:linear-gradient(160deg,rgba(78,32,8,.96),rgba(24,10,3,.96));border:1px solid var(--border-fire-hi);box-shadow:0 14px 40px rgba(0,0,0,.55),0 0 30px rgba(232,96,16,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transform:translateY(0);opacity:1;transition:transform .3s var(--ease),opacity .3s var(--ease),box-shadow .25s,border-color .25s;}
+        .cs-float:hover{transform:translateY(-3px);border-color:#ff7820;box-shadow:0 18px 52px rgba(0,0,0,.6),0 0 44px rgba(232,96,16,.34);}
+        .cs-float.hide{opacity:0;transform:translateY(20px);pointer-events:none;}
+        .cs-float-txt{display:flex;flex-direction:column;line-height:1.2;}
+        .cs-float-txt b{font-family:'Outfit',sans-serif;font-weight:600;font-size:14px;color:#fff;letter-spacing:-.2px;}
+        .cs-float-txt span{font-size:11px;color:var(--muted-hi);}
+        .cs-float-arrow{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#7a2000,#d04800);color:#fff;font-size:15px;}
+        @media(prefers-reduced-motion:reduce){.cs-float{transition:opacity .3s;}}
+        @media(max-width:1024px){.cs-grid{grid-template-columns:1fr;}}
+        @media(max-width:600px){.cs-float{right:14px;bottom:14px;padding:11px 14px;}.cs-float-txt span{display:none;}}
 
         /* FAQ */
         .faq-list{margin-top:48px;border-top:1px solid var(--border);}
@@ -687,6 +706,31 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
 
 <hr class="hr">
 
+<!-- CASE STUDIES (Platzhalter -- echte Inhalte hier eintragen) -->
+<section class="sw" id="case-studies" aria-label="AMP case studies">
+    <h2 class="sec-h2">Case studies.</h2>
+    <p class="sec-sub">Modernization engagements with measurable outcomes. Detailed write-ups are being finalized with our clients.</p>
+    <div class="cs-grid">
+        <article class="gc cs-card">
+            <h3 class="cs-sector">Banking</h3>
+            <p class="cs-desc">Replace with the real case: the legacy landscape, the modernization goal, and what AMP delivered.</p>
+            <div class="cs-metric"><div class="cs-metric-num">00%</div><div class="cs-metric-label">Key result metric</div></div>
+        </article>
+        <article class="gc cs-card">
+            <h3 class="cs-sector">Insurance</h3>
+            <p class="cs-desc">Replace with the real case: the legacy landscape, the modernization goal, and what AMP delivered.</p>
+            <div class="cs-metric"><div class="cs-metric-num">00%</div><div class="cs-metric-label">Key result metric</div></div>
+        </article>
+        <article class="gc cs-card">
+            <h3 class="cs-sector">Telecommunications</h3>
+            <p class="cs-desc">Replace with the real case: the legacy landscape, the modernization goal, and what AMP delivered.</p>
+            <div class="cs-metric"><div class="cs-metric-num">00%</div><div class="cs-metric-label">Key result metric</div></div>
+        </article>
+    </div>
+</section>
+
+<hr class="hr">
+
 <!-- DISCOVERY (placeholder, hero CTA anchor) -->
 <section class="sw" id="discovery" aria-label="Discovery options">
     <h2 class="sec-h2">Discovery: Workshop or Conversation.</h2>
@@ -781,6 +825,19 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
 </main>
 
 <!-- FOOTER -->
+<a href="#case-studies" class="cs-float" id="csFloat" aria-label="Jump to case studies">
+    <span class="cs-float-txt"><b>Case studies</b><span>See AMP in action</span></span>
+    <span class="cs-float-arrow" aria-hidden="true">&#8595;</span>
+</a>
+<script>
+(function(){
+  var f=document.getElementById('csFloat'), cs=document.getElementById('case-studies');
+  if(!f||!cs||!('IntersectionObserver' in window)) return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){f.classList.toggle('hide',e.isIntersecting);});},{threshold:0.18});
+  io.observe(cs);
+})();
+</script>
+
 <footer>
     <div class="footer-inner">
         <div class="footer-top">
