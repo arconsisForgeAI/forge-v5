@@ -357,7 +357,7 @@ nav{
         .cap-card:hover{border-color:rgba(255,120,32,.55);transform:translateY(-3px);box-shadow:0 22px 70px rgba(0,0,0,.75),inset 0 1px 0 rgba(255,255,255,.12),inset 0 0 50px rgba(232,96,16,.10);}
         /* Film-grain Test (nur cap-cards) */
         .cap-card{position:relative;overflow:hidden;}
-        .cap-card::before{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;opacity:.15;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='fg'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23fg)'/%3E%3C/svg%3E");background-size:200px 200px;}
+        .cap-card::before{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;opacity:.35;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='fg'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23fg)'/%3E%3C/svg%3E");background-size:200px 200px;}
         .cap-card > *{position:relative;z-index:1;}
         .cap-card h3{font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.6px;margin-bottom:10px;color:var(--text);}
         .cap-card .cap-lead{font-size:16px;color:var(--muted-hi);line-height:1.65;font-weight:300;margin-bottom:20px;}
