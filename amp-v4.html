@@ -357,10 +357,13 @@ nav{
         .cap-card:hover{border-color:rgba(255,120,32,.55);transform:translateY(-3px);box-shadow:0 22px 70px rgba(0,0,0,.75),inset 0 1px 0 rgba(255,255,255,.12),inset 0 0 50px rgba(232,96,16,.10);}
         /* Film-grain auf allen AMP-Cards (animiert, 0.8) */
         .gc,.cap-card,.compare-col{position:relative;overflow:hidden;}
-        .card-grain{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none;z-index:1;}
+        .card-grain{position:absolute !important;inset:0 !important;width:auto !important;height:auto !important;border-radius:inherit;overflow:hidden;pointer-events:none;z-index:0 !important;}
         .card-grain::after{content:'';position:absolute;inset:-60%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='fg'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23fg)'/%3E%3C/svg%3E") 0 0/200px 200px;opacity:.8;mix-blend-mode:overlay;animation:grainShift .7s steps(8) infinite;will-change:transform;}
         .gc>*:not(.card-grain),.cap-card>*:not(.card-grain),.compare-col>*:not(.card-grain){position:relative;z-index:2;}
         @keyframes grainShift{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-8%)}20%{transform:translate(-12%,5%)}30%{transform:translate(6%,-15%)}40%{transform:translate(-4%,14%)}50%{transform:translate(-10%,7%)}60%{transform:translate(9%,-4%)}70%{transform:translate(2%,10%)}80%{transform:translate(4%,18%)}90%{transform:translate(-7%,5%)}}
+        .gc .card-grain::after{mix-blend-mode:screen;opacity:.5;}
+        .cap-card .card-grain::after{opacity:.5;}
+        .compare-col .card-grain::after{opacity:.22;}
         @media(prefers-reduced-motion:reduce){.card-grain::after{animation:none;}}
         .cap-card h3{font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.6px;margin-bottom:10px;color:var(--text);}
         .cap-card .cap-lead{font-size:16px;color:var(--muted-hi);line-height:1.65;font-weight:300;margin-bottom:20px;}
