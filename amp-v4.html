@@ -378,8 +378,9 @@ nav{
         .why-split .sec-sub{margin-bottom:0;}
         .why-sticky{position:sticky;top:140px;}
         .why-cards{display:flex;flex-direction:column;}
-        .why-pt{position:relative;min-height:19vh;display:flex;flex-direction:column;justify-content:center;padding:0 8px 0 44px;}
-        .why-pt::before{content:'';position:absolute;left:6px;top:50%;transform:translateY(-50%);width:11px;height:11px;border-radius:50%;background:linear-gradient(135deg,#d04500,#ff7820);box-shadow:0 0 16px rgba(232,96,16,.7);}
+        .why-pt{position:relative;min-height:19vh;display:flex;flex-direction:column;justify-content:center;padding:0 8px;}
+        .why-ico{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--fire-bright);background:linear-gradient(160deg,rgba(208,69,0,.18),rgba(16,8,3,.4));border:1px solid rgba(232,96,16,.45);box-shadow:0 0 24px rgba(232,96,16,.18),inset 0 1px 0 rgba(255,255,255,.06);margin-bottom:18px;}
+        .why-ico svg{width:30px;height:30px;}
         .why-pt h3{font-family:'Outfit',sans-serif;font-size:26px;font-weight:700;letter-spacing:-.6px;margin-bottom:12px;color:var(--text);}
         .why-pt p{font-size:17px;color:rgba(255,255,255,.82);line-height:1.7;font-weight:300;}
         .why-pt[data-rs]{opacity:0;transform:translateX(70px);filter:blur(5px);transition:opacity .7s var(--ease),transform .7s var(--ease),filter .6s ease;}
@@ -388,7 +389,7 @@ nav{
             .why-pt[data-rs]{transition:none;animation:flyInX linear both;animation-timeline:view();animation-range:entry 18% cover 38%;}
             @keyframes flyInX{from{opacity:0;transform:translateX(70px);filter:blur(5px);}to{opacity:1;transform:translateX(0);filter:blur(0);}}
         }
-        @media(max-width:1024px){.why-split{grid-template-columns:1fr;gap:40px;}.why-sticky{position:static;}.why-pt{min-height:0;padding:34px 8px 34px 44px;}.why-pt::before{top:42px;transform:none;}}
+        @media(max-width:1024px){.why-split{grid-template-columns:1fr;gap:40px;}.why-sticky{position:static;}.why-pt{min-height:0;padding:34px 8px;}}
 
         /* Capability grid (Scope) */
         .cap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:56px;}
@@ -597,18 +598,22 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
         </div>
         <div class="why-cards">
             <article class="why-pt" data-rs>
+                <span class="why-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg></span>
                 <h3>Legacy technology risk</h3>
                 <p>Deprecated frameworks, unsupported dependencies, security exposure.</p>
             </article>
             <article class="why-pt" data-rs>
+                <span class="why-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg></span>
                 <h3>Delivery fragmentation</h3>
                 <p>Different stacks, inconsistent processes, disconnected teams.</p>
             </article>
             <article class="why-pt" data-rs>
+                <span class="why-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg></span>
                 <h3>Documentation drift</h3>
                 <p>Architecture knowledge exists only in code or long-term employees.</p>
             </article>
             <article class="why-pt" data-rs>
+                <span class="why-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg></span>
                 <h3>Fear of disruption</h3>
                 <p>Critical systems cannot tolerate reckless migration approaches.</p>
             </article>
