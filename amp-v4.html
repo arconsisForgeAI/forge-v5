@@ -131,11 +131,9 @@ nav{
         .amp-fw-flow{stroke:var(--fire-bright);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:10 90;stroke-dashoffset:100;animation:fwflow 3s linear infinite;}
         @keyframes fwflow{0%{stroke-dashoffset:100;}100%{stroke-dashoffset:0;}}
         @media(min-width:901px){
-            .amp-fw{min-height:580px;}
-            .amp-fw-svg{display:block;position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;}
-            .amp-fw-cards{grid-template-columns:1fr 1fr;gap:240px 280px;}
-            .amp-fw-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);margin:0;z-index:3;}
-            .amp-fw .cap-card{position:relative;z-index:2;}
+            .amp-fw-hub{margin-bottom:6px;}
+            .amp-fw-svg{display:block;width:100%;height:92px;margin:0 0 -2px;}
+            .amp-fw-cards{grid-template-columns:repeat(4,1fr);gap:24px;align-items:start;}
         }
         @media(prefers-reduced-motion:reduce){
             .amp-fw-hub::before,.amp-fw-hub::after,.amp-fw-word,.amp-fw-flow{animation:none;}
@@ -650,17 +648,17 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
     <h2 class="sec-h2">The scope of enterprise modernization.</h2>
     <p class="sec-sub">A structured modernization framework for enterprise systems. AMP enables scalable enterprise modernization through structured transformation workflows across applications, delivery processes, technical knowledge, and engineering capabilities.</p>
     <div class="amp-fw">
-        <svg class="amp-fw-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-            <line class="amp-fw-line" x1="50" y1="50" x2="26" y2="30" vector-effect="non-scaling-stroke"/>
-            <line class="amp-fw-line" x1="50" y1="50" x2="74" y2="30" vector-effect="non-scaling-stroke"/>
-            <line class="amp-fw-line" x1="50" y1="50" x2="26" y2="70" vector-effect="non-scaling-stroke"/>
-            <line class="amp-fw-line" x1="50" y1="50" x2="74" y2="70" vector-effect="non-scaling-stroke"/>
-            <line class="amp-fw-flow" pathLength="100" x1="50" y1="50" x2="26" y2="30" vector-effect="non-scaling-stroke" style="animation-delay:0s"/>
-            <line class="amp-fw-flow" pathLength="100" x1="50" y1="50" x2="74" y2="30" vector-effect="non-scaling-stroke" style="animation-delay:.4s"/>
-            <line class="amp-fw-flow" pathLength="100" x1="50" y1="50" x2="26" y2="70" vector-effect="non-scaling-stroke" style="animation-delay:.8s"/>
-            <line class="amp-fw-flow" pathLength="100" x1="50" y1="50" x2="74" y2="70" vector-effect="non-scaling-stroke" style="animation-delay:1.2s"/>
-        </svg>
         <div class="amp-fw-hub" aria-hidden="true"><span class="amp-fw-word">AMP</span></div>
+        <svg class="amp-fw-svg" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true">
+            <line class="amp-fw-line" x1="50" y1="2" x2="12.5" y2="58" vector-effect="non-scaling-stroke"/>
+            <line class="amp-fw-line" x1="50" y1="2" x2="37.5" y2="58" vector-effect="non-scaling-stroke"/>
+            <line class="amp-fw-line" x1="50" y1="2" x2="62.5" y2="58" vector-effect="non-scaling-stroke"/>
+            <line class="amp-fw-line" x1="50" y1="2" x2="87.5" y2="58" vector-effect="non-scaling-stroke"/>
+            <line class="amp-fw-flow" pathLength="100" x1="50" y1="2" x2="12.5" y2="58" vector-effect="non-scaling-stroke" style="animation-delay:0s"/>
+            <line class="amp-fw-flow" pathLength="100" x1="50" y1="2" x2="37.5" y2="58" vector-effect="non-scaling-stroke" style="animation-delay:.4s"/>
+            <line class="amp-fw-flow" pathLength="100" x1="50" y1="2" x2="62.5" y2="58" vector-effect="non-scaling-stroke" style="animation-delay:.8s"/>
+            <line class="amp-fw-flow" pathLength="100" x1="50" y1="2" x2="87.5" y2="58" vector-effect="non-scaling-stroke" style="animation-delay:1.2s"/>
+        </svg>
         <div class="amp-fw-cards">
         <article class="cap-card">
         <h3>Codebase modernization</h3>
