@@ -371,6 +371,24 @@ nav{
         .problem-grid .gc h3{font-family:'Outfit',sans-serif;font-size:21px;font-weight:700;letter-spacing:-.45px;margin-bottom:12px;color:var(--text);}
         .problem-grid .gc p{font-size:16px;color:rgba(255,255,255,.82);line-height:1.7;font-weight:300;}
         @media(max-width:720px){.problem-grid{grid-template-columns:1fr;}}
+        /* WHY: sticky text left, points fly in one by one on the right */
+        .why-split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);gap:72px;align-items:start;}
+        .why-split .sec-sub{margin-bottom:0;}
+        .why-sticky{position:sticky;top:140px;}
+        .why-cards{display:flex;flex-direction:column;}
+        /* each point owns a tall scroll slot so they reveal one after another */
+        .why-pt{position:relative;min-height:28vh;display:flex;flex-direction:column;justify-content:center;padding:0 8px 0 44px;}
+        .why-pt::before{content:'';position:absolute;left:6px;top:50%;transform:translateY(-50%);width:11px;height:11px;border-radius:50%;background:linear-gradient(135deg,#d04500,#ff7820);box-shadow:0 0 16px rgba(232,96,16,.7);}
+        .why-pt h3{font-family:'Outfit',sans-serif;font-size:26px;font-weight:700;letter-spacing:-.6px;margin-bottom:12px;color:var(--text);}
+        .why-pt p{font-size:17px;color:rgba(255,255,255,.82);line-height:1.7;font-weight:300;}
+        /* fly in from the right, sequential with scroll */
+        .why-pt[data-rs]{opacity:0;transform:translateX(70px);filter:blur(5px);transition:opacity .7s var(--ease),transform .7s var(--ease),filter .6s ease;}
+        .why-pt[data-rs].in{opacity:1;transform:translateX(0);filter:blur(0);}
+        @supports(animation-timeline:view()){
+            .why-pt[data-rs]{transition:none;animation:flyInX linear both;animation-timeline:view();animation-range:entry 18% cover 38%;}
+            @keyframes flyInX{from{opacity:0;transform:translateX(70px);filter:blur(5px);}to{opacity:1;transform:translateX(0);filter:blur(0);}}
+        }
+        @media(max-width:1024px){.why-split{grid-template-columns:1fr;gap:40px;}.why-sticky{position:static;}.why-pt{min-height:0;padding:34px 8px 34px 44px;}.why-pt::before{top:42px;transform:none;}}
 
         /* Capability grid (Scope) */
         .cap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:56px;}
@@ -569,25 +587,29 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
 
 <!-- WHY MODERNIZATION MATTERS -->
 <section class="sw" id="why" aria-label="Why modernization matters">
-    <h2 class="sec-h2 writeon" data-writeon><span class="wo-line">Why modernization matters,</span><span class="wo-line">and why it rarely happens.</span></h2>
-    <p class="sec-sub">Most modernization initiatives stall before value is delivered. Organizations know modernization is necessary. Operational risk, fragmented systems, budget uncertainty, and lack of internal capacity often delay execution for years.</p>
-    <div class="problem-grid">
-        <article class="gc">
-            <h3>Legacy technology risk</h3>
-            <p>Deprecated frameworks, unsupported dependencies, security exposure.</p>
-        </article>
-        <article class="gc">
-            <h3>Delivery fragmentation</h3>
-            <p>Different stacks, inconsistent processes, disconnected teams.</p>
-        </article>
-        <article class="gc">
-            <h3>Documentation drift</h3>
-            <p>Architecture knowledge exists only in code or long-term employees.</p>
-        </article>
-        <article class="gc">
-            <h3>Fear of disruption</h3>
-            <p>Critical systems cannot tolerate reckless migration approaches.</p>
-        </article>
+    <div class="why-split">
+        <div class="why-sticky">
+            <h2 class="sec-h2 writeon" data-writeon><span class="wo-line">Why modernization matters,</span><span class="wo-line">and why it rarely happens.</span></h2>
+            <p class="sec-sub">Most modernization initiatives stall before value is delivered. Organizations know modernization is necessary. Operational risk, fragmented systems, budget uncertainty, and lack of internal capacity often delay execution for years.</p>
+        </div>
+        <div class="why-cards">
+            <article class="why-pt" data-rs>
+                <h3>Legacy technology risk</h3>
+                <p>Deprecated frameworks, unsupported dependencies, security exposure.</p>
+            </article>
+            <article class="why-pt" data-rs>
+                <h3>Delivery fragmentation</h3>
+                <p>Different stacks, inconsistent processes, disconnected teams.</p>
+            </article>
+            <article class="why-pt" data-rs>
+                <h3>Documentation drift</h3>
+                <p>Architecture knowledge exists only in code or long-term employees.</p>
+            </article>
+            <article class="why-pt" data-rs>
+                <h3>Fear of disruption</h3>
+                <p>Critical systems cannot tolerate reckless migration approaches.</p>
+            </article>
+        </div>
     </div>
 </section>
 
@@ -877,16 +899,6 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
   if(!f||!cs||!('IntersectionObserver' in window)) return;
   var io=new IntersectionObserver(function(es){es.forEach(function(e){f.classList.toggle('hide',e.isIntersecting);});},{threshold:0.18});
   io.observe(cs);
-})();
-</script>
-
-<script>
-(function(){
-  document.querySelectorAll('.compare-col').forEach(function(card){
-    if(card.querySelector(':scope > .card-grain')) return;
-    var g=document.createElement('span'); g.className='card-grain'; g.setAttribute('aria-hidden','true');
-    card.insertBefore(g, card.firstChild);
-  });
 })();
 </script>
 
