@@ -132,10 +132,10 @@ nav{
         @keyframes fwflow{0%{stroke-dashoffset:100;}100%{stroke-dashoffset:0;}}
         @media(min-width:901px){
             .amp-fw{padding:40px 0;}
-            .amp-fw-cards{grid-template-columns:1fr 1fr;column-gap:300px;row-gap:160px;align-items:stretch;}
-            .amp-fw-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);margin:0;z-index:3;width:144px;height:144px;}
-            .amp-fw-word{font-size:46px;}
-            .amp-fw-svg{display:block;position:absolute;inset:0;width:100%;height:100%;margin:0;z-index:1;pointer-events:none;}
+            .amp-fw-cards{grid-template-columns:1fr 1fr;column-gap:300px;row-gap:200px;align-items:stretch;}
+            .amp-fw-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);margin:0;z-index:3;width:130px;height:130px;}
+            .amp-fw-word{font-size:44px;}
+            .amp-fw-svg{display:block;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:280px;height:280px;margin:0;z-index:1;pointer-events:none;}
         }
         @media(prefers-reduced-motion:reduce){
             .amp-fw-hub::before,.amp-fw-hub::after,.amp-fw-word,.amp-fw-flow{animation:none;}
@@ -651,15 +651,15 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
     <p class="sec-sub">A structured modernization framework for enterprise systems. AMP enables scalable enterprise modernization through structured transformation workflows across applications, delivery processes, technical knowledge, and engineering capabilities.</p>
     <div class="amp-fw">
         <div class="amp-fw-hub" aria-hidden="true"><span class="amp-fw-word">AMP</span></div>
-        <svg class="amp-fw-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-            <line class="amp-fw-line" x1="50" y1="50" x2="26" y2="27" vector-effect="non-scaling-stroke"/>
-            <line class="amp-fw-line" x1="50" y1="50" x2="74" y2="27" vector-effect="non-scaling-stroke"/>
-            <line class="amp-fw-line" x1="50" y1="50" x2="26" y2="73" vector-effect="non-scaling-stroke"/>
-            <line class="amp-fw-line" x1="50" y1="50" x2="74" y2="73" vector-effect="non-scaling-stroke"/>
-            <line class="amp-fw-flow" pathLength="100" x1="50" y1="50" x2="26" y2="27" vector-effect="non-scaling-stroke" style="animation-delay:0s"/>
-            <line class="amp-fw-flow" pathLength="100" x1="50" y1="50" x2="74" y2="27" vector-effect="non-scaling-stroke" style="animation-delay:.4s"/>
-            <line class="amp-fw-flow" pathLength="100" x1="50" y1="50" x2="26" y2="73" vector-effect="non-scaling-stroke" style="animation-delay:.8s"/>
-            <line class="amp-fw-flow" pathLength="100" x1="50" y1="50" x2="74" y2="73" vector-effect="non-scaling-stroke" style="animation-delay:1.2s"/>
+        <svg class="amp-fw-svg" viewBox="0 0 100 100" aria-hidden="true">
+            <line class="amp-fw-line" x1="50" y1="50" x2="16" y2="20" vector-effect="non-scaling-stroke"/>
+            <line class="amp-fw-line" x1="50" y1="50" x2="84" y2="20" vector-effect="non-scaling-stroke"/>
+            <line class="amp-fw-line" x1="50" y1="50" x2="16" y2="80" vector-effect="non-scaling-stroke"/>
+            <line class="amp-fw-line" x1="50" y1="50" x2="84" y2="80" vector-effect="non-scaling-stroke"/>
+            <line class="amp-fw-flow" pathLength="100" x1="50" y1="50" x2="16" y2="20" vector-effect="non-scaling-stroke" style="animation-delay:0s"/>
+            <line class="amp-fw-flow" pathLength="100" x1="50" y1="50" x2="84" y2="20" vector-effect="non-scaling-stroke" style="animation-delay:.4s"/>
+            <line class="amp-fw-flow" pathLength="100" x1="50" y1="50" x2="16" y2="80" vector-effect="non-scaling-stroke" style="animation-delay:.8s"/>
+            <line class="amp-fw-flow" pathLength="100" x1="50" y1="50" x2="84" y2="80" vector-effect="non-scaling-stroke" style="animation-delay:1.2s"/>
         </svg>
         <div class="amp-fw-cards">
         <article class="cap-card">
