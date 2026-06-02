@@ -118,9 +118,29 @@ nav{
         .writeon.in-view .wo-line{--wo:114%;}
         @media(prefers-reduced-motion:reduce){.writeon .wo-line{--wo:114%;transition:none;}}
         .sec-sub{font-size:clamp(16px,1.6vw,18px);color:var(--muted-hi);line-height:1.78;font-weight:300;max-width:620px;margin-top:14px;margin-bottom:56px;letter-spacing:-.1px;}
-        .scope-loop{position:relative;width:100%;margin:0 0 56px;border:1px solid rgba(200,80,0,.18);border-radius:16px;overflow:hidden;background:#000;box-shadow:0 24px 80px rgba(140,40,0,.18);}
-        .scope-loop video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;}
-        .scope-loop::after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 120px rgba(0,0,0,.55);}
+        .amp-fw{position:relative;}
+        .amp-fw-cards{display:grid;grid-template-columns:1fr;gap:20px;}
+        .amp-fw-hub{position:relative;display:flex;align-items:center;justify-content:center;width:128px;height:128px;margin:8px auto 32px;border-radius:50%;background:radial-gradient(circle at 50% 42%,rgba(208,69,0,.20),rgba(10,6,2,.92) 70%);border:1px solid rgba(208,69,0,.45);box-shadow:0 0 50px rgba(208,72,0,.22),inset 0 0 30px rgba(0,0,0,.6);}
+        .amp-fw-hub::before,.amp-fw-hub::after{content:'';position:absolute;inset:-1px;border-radius:50%;border:1px solid rgba(208,69,0,.5);animation:fwpulse 3.4s ease-out infinite;}
+        .amp-fw-hub::after{animation-delay:1.7s;}
+        @keyframes fwpulse{0%{transform:scale(.85);opacity:.7;}100%{transform:scale(2);opacity:0;}}
+        .amp-fw-word{font-family:'Outfit',sans-serif;font-weight:800;font-size:40px;letter-spacing:.5px;line-height:1;background:linear-gradient(118deg,var(--fire-mid) 0%,var(--fire-bright) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:fwbreath 3.4s ease-in-out infinite;}
+        @keyframes fwbreath{0%,100%{filter:drop-shadow(0 0 10px rgba(232,96,16,.35));}50%{filter:drop-shadow(0 0 22px rgba(232,96,16,.7));}}
+        .amp-fw-svg{display:none;}
+        .amp-fw-line{stroke:rgba(208,69,0,.30);stroke-width:1;}
+        .amp-fw-flow{stroke:var(--fire-bright);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:10 90;stroke-dashoffset:100;animation:fwflow 3s linear infinite;}
+        @keyframes fwflow{0%{stroke-dashoffset:100;}100%{stroke-dashoffset:0;}}
+        @media(min-width:901px){
+            .amp-fw{min-height:580px;}
+            .amp-fw-svg{display:block;position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;}
+            .amp-fw-cards{grid-template-columns:1fr 1fr;gap:240px 280px;}
+            .amp-fw-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);margin:0;z-index:3;}
+            .amp-fw .cap-card{position:relative;z-index:2;}
+        }
+        @media(prefers-reduced-motion:reduce){
+            .amp-fw-hub::before,.amp-fw-hub::after,.amp-fw-word,.amp-fw-flow{animation:none;}
+            .amp-fw-flow{stroke-dashoffset:0;stroke-dasharray:none;opacity:.55;}
+        }
         /* GLASS CARD */
         .gc{background:linear-gradient(160deg,rgba(78,32,8,.95) 0%,rgba(42,18,6,.92) 38%,rgba(16,8,3,.88) 100%);backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);border:1px solid rgba(232,96,16,.22);border-radius:20px;position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 0 0 1px rgba(255,120,32,.04),0 8px 28px rgba(0,0,0,.6);transition:transform .38s var(--ease),border-color .3s,box-shadow .38s var(--ease);}
         .gc::before{content:'';position:absolute;top:0;left:0;right:0;height:46%;background:linear-gradient(180deg,rgba(255,140,50,.10) 0%,transparent 100%);pointer-events:none;border-radius:20px 20px 0 0;}
@@ -629,12 +649,19 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
 <section class="sw" id="capabilities" aria-label="Scope of enterprise modernization">
     <h2 class="sec-h2">The scope of enterprise modernization.</h2>
     <p class="sec-sub">A structured modernization framework for enterprise systems. AMP enables scalable enterprise modernization through structured transformation workflows across applications, delivery processes, technical knowledge, and engineering capabilities.</p>
-    <figure class="scope-loop" aria-hidden="true">
-        <video autoplay muted loop playsinline preload="metadata" poster="assets/media/amp-scope-loop-poster.jpg">
-            <source src="assets/media/amp-scope-loop.mp4" type="video/mp4">
-        </video>
-    </figure>
-    <div class="cap-grid">
+    <div class="amp-fw">
+        <svg class="amp-fw-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <line class="amp-fw-line" x1="50" y1="50" x2="26" y2="30" vector-effect="non-scaling-stroke"/>
+            <line class="amp-fw-line" x1="50" y1="50" x2="74" y2="30" vector-effect="non-scaling-stroke"/>
+            <line class="amp-fw-line" x1="50" y1="50" x2="26" y2="70" vector-effect="non-scaling-stroke"/>
+            <line class="amp-fw-line" x1="50" y1="50" x2="74" y2="70" vector-effect="non-scaling-stroke"/>
+            <line class="amp-fw-flow" pathLength="100" x1="50" y1="50" x2="26" y2="30" vector-effect="non-scaling-stroke" style="animation-delay:0s"/>
+            <line class="amp-fw-flow" pathLength="100" x1="50" y1="50" x2="74" y2="30" vector-effect="non-scaling-stroke" style="animation-delay:.4s"/>
+            <line class="amp-fw-flow" pathLength="100" x1="50" y1="50" x2="26" y2="70" vector-effect="non-scaling-stroke" style="animation-delay:.8s"/>
+            <line class="amp-fw-flow" pathLength="100" x1="50" y1="50" x2="74" y2="70" vector-effect="non-scaling-stroke" style="animation-delay:1.2s"/>
+        </svg>
+        <div class="amp-fw-hub" aria-hidden="true"><span class="amp-fw-word">AMP</span></div>
+        <div class="amp-fw-cards">
         <article class="cap-card">
         <h3>Codebase modernization</h3>
         <p class="cap-lead">Replace uncontrolled rewrites with structured modernization programs powered by AI agents.</p>
@@ -691,6 +718,7 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
         </ul>
         </details>
     </article>
+    </div>
     </div>
 </section>
 
