@@ -90,7 +90,7 @@ nav{
         .hero-eyebrow::before{content:'';display:inline-block;width:32px;height:1px;background:var(--fire-mid);}
         .hero h1{font-family:'Outfit',sans-serif;font-size:clamp(52px,6.5vw,88px);font-weight:900;line-height:1.0;letter-spacing:-3.5px;text-wrap:balance;margin-bottom:12px;animation:fadeUp .7s var(--ease) .2s both;}
         .hero h1 .fire{background:linear-gradient(118deg,var(--fire-mid) 0%,var(--fire-bright) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 28px rgba(200,80,0,.55));}
-        .hero-sub{font-family:'Outfit',sans-serif;font-size:clamp(24px,3.2vw,38px);font-weight:400;color:var(--muted-hi);margin-top:18px;margin-bottom:10px;max-width:780px;letter-spacing:-.6px;animation:fadeUp .7s var(--ease) .3s both;}
+        .hero-sub{font-family:'Outfit',sans-serif;font-size:clamp(24px,3.2vw,38px);font-weight:400;color:var(--muted-hi);margin-top:4px;margin-bottom:10px;max-width:780px;letter-spacing:-.6px;animation:fadeUp .7s var(--ease) .3s both;}
         .hero-lead{font-size:clamp(15px,1.6vw,18px);font-weight:300;color:var(--muted-hi);max-width:680px;line-height:1.82;margin-bottom:48px;animation:fadeUp .7s var(--ease) .4s both;}
         .hero-actions{display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp .7s var(--ease) .5s both;}
         .hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:56px;animation:fadeUp .7s var(--ease) .65s both;}
@@ -229,9 +229,6 @@ nav{
         .feat-item:hover h3{transform:translateZ(26px);}
         .feat-item:hover p{transform:translateZ(14px);}
 
-        /* Magnetic CTA */
-        .magnetic-btn{transition:transform .28s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease!important;will-change:transform;}
-
         /* Scroll-Driven Narrative — "So arbeitet ein Agent" */
         .scrolly-sec{padding:80px 52px 0;position:relative;z-index:2;}
         .scrolly-stage{position:relative;height:400vh;margin-top:48px;}
@@ -276,20 +273,20 @@ nav{
         .demo-frame video{display:block;width:100%;height:auto;position:relative;z-index:2;background:#000;}
         @media(max-width:600px){.demo-frame{border-radius:12px;}}
 
-        .hero-h1-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:18px;animation:fadeUp .7s var(--ease) .2s both;}
+        .hero-h1-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:8px;animation:fadeUp .7s var(--ease) .2s both;}
         .hero-h1-row h1{margin-bottom:0;font-size:clamp(40px,4.8vw,64px);letter-spacing:-2.4px;animation:none;flex:1 1 auto;}
         .hero-amp-logo{height:88px;width:auto;object-fit:contain;flex-shrink:0;display:block;filter:drop-shadow(0 0 28px rgba(232,96,16,.35));margin-left:auto;}
         @media(max-width:900px){.hero-h1-row h1{font-size:clamp(36px,7vw,52px);}}
         @media(max-width:900px){.hero-amp-logo{height:64px;}}
 
         /* Hero 2-col grid (text left, expert placeholder right) */
-        .hero-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:48px;align-items:center;margin-top:12px;}
-        .hero-text{display:flex;flex-direction:column;}
+        .hero-grid{display:grid;grid-template-columns:1fr 1.55fr;gap:48px;align-items:start;margin-top:0;}
+        .hero-text{display:flex;flex-direction:column;position:relative;z-index:2;}
         .hero-text .hero-lead{max-width:none;}
-        .hero-text .hero-actions{margin-top:auto;}
-        .hero-vis{position:relative;display:flex;align-items:center;justify-content:center;overflow:visible;margin-top:-26px;animation:fadeUp .8s var(--ease) .5s both;}
+        .hero-text .hero-actions{margin-top:30px;}
+        .hero-vis{position:relative;z-index:1;display:flex;align-items:flex-start;justify-content:center;overflow:visible;margin-top:-110px;animation:fadeUp .8s var(--ease) .5s both;}
         .hero-vis::before{content:'';position:absolute;inset:-20% -12%;background:radial-gradient(ellipse 58% 52% at 54% 46%, rgba(208,69,0,.32), rgba(122,32,0,.13) 45%, transparent 72%);z-index:0;pointer-events:none;}
-        .hero-vis img,.hero-vis video{position:relative;z-index:1;width:118%;height:auto;display:block;mix-blend-mode:screen;transform:translateX(4%);
+        .hero-vis img,.hero-vis video{position:relative;z-index:1;width:127%;height:auto;display:block;mix-blend-mode:screen;transform:translateX(9%);
             /* weiches Ausfaden an allen Kanten: zwei Verlaeufe verschnitten, 18% Fade-Band je Seite */
             -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
             mask-image:linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
@@ -385,7 +382,7 @@ nav{
         .bottleneck-grid{display:grid;grid-template-columns:1.85fr .68fr;gap:40px;align-items:center;}
         .bottleneck-text{display:flex;flex-direction:column;max-width:520px;}
         .bottleneck-text .sec-h2{max-width:none;margin:0;font-size:clamp(23px,2.6vw,34px);letter-spacing:-1px;}
-        .bottleneck-sub{margin-top:40px;margin-bottom:0;max-width:46ch;}
+        .bottleneck-sub{margin-top:14px;margin-bottom:0;max-width:46ch;}
         .bn-neck-top{text-align:center;font-family:'Outfit',sans-serif;font-weight:300;font-size:clamp(24px,2.4vw,32px);letter-spacing:-.6px;color:#fff;}
         .bn-stage{position:relative;width:100%;height:330px;}
         .bn-stage canvas{position:absolute;inset:0;width:100%;height:100%;}
@@ -426,6 +423,19 @@ nav{
         .writeon .wo-line + .wo-line{transition-delay:.45s;}
         .writeon.in-view .wo-line{--wo:114%;}
         @media(prefers-reduced-motion:reduce){.writeon .wo-line{--wo:114%;transition:none;}}
+/* === bottleneck -> vision pinned bridge (hold, then crossfade) === */
+        .bridge-stage{position:relative;z-index:2;height:185vh;}
+        .bridge-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden;}
+        .bridge-grid{position:relative;width:100%;max-width:1320px;margin:0 auto;padding:32px 52px;display:grid;grid-template-columns:1.28fr .72fr;gap:48px;align-items:center;}
+        .bridge-visual{position:relative;width:100%;max-width:940px;}
+        .bridge-visual #eci-chart{position:relative;width:100%;will-change:opacity;}
+        .bridge-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;mix-blend-mode:screen;opacity:0;pointer-events:none;will-change:opacity;}
+        .bridge-text{position:relative;min-height:0;}
+        .bridge-phase{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;will-change:opacity,transform;}
+        .bridge-phase .bottleneck-text,.bridge-phase .vision-text{max-width:520px;}
+        #phase-vis{opacity:0;}
+        .bridge-phase .writeon .wo-line{--wo:114%;-webkit-mask-image:none;mask-image:none;transition:none;}
+        @media(max-width:1024px){.bridge-stage{height:auto;}.bridge-sticky{position:static;height:auto;overflow:visible;display:block;}.bridge-grid{grid-template-columns:1fr;gap:30px;}.bridge-text{position:static;min-height:0;}.bridge-phase{position:static;opacity:1!important;transform:none!important;margin-top:24px;}.bridge-video{display:none;}}
 </style>
 <style id="pwd-gate-style">
 html.locked, html.locked body { overflow:hidden !important; height:100% !important; }
@@ -522,33 +532,29 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
 
 <hr class="hr">
 
-<!-- PROBLEM -->
-<section class="sw" id="about" aria-label="The bottleneck">
-    <div class="bottleneck-grid">
+<!-- BOTTLENECK -> VISION (pinned, hold then crossfade) -->
+<section class="bridge-stage" id="about" aria-label="The bottleneck and the KAP vision">
+  <div class="bridge-sticky">
+    <div class="bridge-grid">
+      <div class="bridge-visual">
         <div class="bottleneck-chart" id="eci-chart" role="img" aria-label="Epoch Capabilities Index: AI model capability score rising steeply by release date">
             <svg id="eci-svg" viewBox="0 0 1000 562.5" preserveAspectRatio="xMidYMid meet"></svg>
             <div id="eci-tip"></div>
         </div>
-        <div class="bottleneck-text">
+        <video id="vision-video" class="bridge-video" muted playsinline preload="auto" aria-label="An organizational hierarchy of AI agents building on Kubernetes"><source src="assets/media/kap-org-chart.mp4" type="video/mp4"></video>
+      </div>
+      <div class="bridge-text">
+        <div class="bridge-phase" id="phase-bn"><div class="bottleneck-text">
             <h2 class="sec-h2 writeon" data-writeon><span class="wo-line">The bottleneck for agentic AI</span><span class="wo-line">is no longer model capability.</span></h2>
             <p class="sec-sub bottleneck-sub">At the scale of a regulated business, AI agents cannot run like isolated scripts. They need structure: roles, responsibilities, policies, approvals, budgets, and auditability.</p>
-        </div>
-    </div>
-</section>
-
-<hr class="hr">
-
-<!-- VISION -->
-<section class="sw" aria-label="The KAP vision">
-    <div class="vision-split">
-        <div class="vision-text">
+        </div></div>
+        <div class="bridge-phase" id="phase-vis"><div class="vision-text">
             <h2 class="sec-h2 writeon" data-writeon><span class="wo-line">Bring the</span><span class="wo-line">organisational model</span><span class="wo-line">of a company</span><span class="wo-line">to AI agents.</span></h2>
             <p class="sec-sub">Kube Agent Platform brings the organisational model of a company to AI agents, and makes it production-ready for Kubernetes. A Kubernetes-native control plane for running AI agents as governed, accountable members of your organisation. Self-hosted. Secure. Policy-driven. Built for enterprise infrastructure from day one.</p>
-        </div>
-        <div class="vision-graphic">
-            <img alt="An organizational hierarchy of AI agents running on Kubernetes" src="assets/kap-vision.png">
-        </div>
+        </div></div>
+      </div>
     </div>
+  </div>
 </section>
 
 <hr class="hr">
@@ -595,7 +601,7 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
         <h2>AI agents need more<br>than prompts.</h2>
         <p class="lead">They need a way to operate inside your organisation. KAP is coming soon. Reach out if you want to shape what enterprise-grade agent operations look like.</p>
         <div class="cta-acts">
-            <a href="mailto:forge@arconsis.com?subject=KAP%20Early%20Access" class="btn btn-fire magnetic-btn" id="cta-magnetic" aria-label="Get notified when KAP launches">
+            <a href="mailto:forge@arconsis.com?subject=KAP%20Early%20Access" class="btn btn-fire" aria-label="Get notified when KAP launches">
                 <svg width="14" height="14" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 7.5h13M8 2l6 5.5L8 13" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 Get notified
             </a>
@@ -686,26 +692,7 @@ document.querySelectorAll('.feat-item').forEach(item=>{
 });
 
 /* Magnetic CTA */
-(function(){
-    const mag=document.getElementById('cta-magnetic');
-    if(!mag) return;
-    if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if(matchMedia('(hover: none)').matches) return;
-    const RADIUS=200;
-    document.addEventListener('mousemove',e=>{
-        const r=mag.getBoundingClientRect();
-        const cx=r.left+r.width/2, cy=r.top+r.height/2;
-        const dx=e.clientX-cx, dy=e.clientY-cy;
-        const dist=Math.hypot(dx,dy);
-        if(dist<RADIUS){
-            const pull=(RADIUS-dist)/RADIUS;
-            mag.style.transform=`translate(${dx*pull*.30}px,${dy*pull*.30}px) scale(${1+pull*.06})`;
-        } else {
-            mag.style.transform='translate(0,0) scale(1)';
-        }
-    },{passive:true});
-    mag.addEventListener('mouseleave',()=>{mag.style.transform='translate(0,0) scale(1)';});
-})();
+/* magnetic CTA removed */
 
 })();
 </script>
@@ -912,5 +899,46 @@ txt(PX1,ly,"Source: Epoch AI \u2014 ECI (CC BY)","src",{"text-anchor":"end"});
 try{if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches){wrap.classList.add("in");}
 else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){wrap.classList.add("in");io.disconnect();}});},{threshold:.18});io.observe(wrap);}}catch(e){wrap.classList.add("in");}
 })();</script>
+<script>
+(function(){
+  var stage=document.getElementById('about'),
+      vid=document.getElementById('vision-video'),
+      chart=document.getElementById('eci-chart'),
+      pbn=document.getElementById('phase-bn'),
+      pvis=document.getElementById('phase-vis');
+  if(!stage||!pbn||!pvis) return;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mqDesktop=window.matchMedia('(min-width:1025px)');
+  function c01(v){return v<0?0:v>1?1:v;}
+  function seg(p,a,b){return c01((p-a)/(b-a));}
+  var played=false,ticking=false;
+  // HOLD_END: fraction of pinned travel spent showing phase 1 before anything changes
+  var HOLD_START=0.28, HOLD_END=0.74;
+  function update(){
+    ticking=false;
+    if(!mqDesktop.matches){pbn.style.cssText='';pvis.style.cssText='';if(vid)vid.style.opacity='';if(chart)chart.style.opacity='';return;}
+    var vh=window.innerHeight||document.documentElement.clientHeight;
+    var total=stage.offsetHeight-vh;
+    if(total<=0)return;
+    var p=c01(-stage.getBoundingClientRect().top/total);
+    var t=seg(p,HOLD_START,HOLD_END); // 0 while holding phase 1, ramps to 1, then holds phase 2
+    var pa=seg(t,0,0.50);
+    pbn.style.opacity=(1-pa).toFixed(3);
+    pbn.style.transform='translateY('+(-58*pa).toFixed(1)+'px)';
+    var pb=seg(t,0.45,1);
+    pvis.style.opacity=pb.toFixed(3);
+    pvis.style.transform='translateY('+(58*(1-pb)).toFixed(1)+'px)';
+    var pv=seg(t,0.30,0.78);
+    if(vid)vid.style.opacity=pv.toFixed(3);
+    if(chart)chart.style.opacity=(pv>0?(1-pv).toFixed(3):'');
+    if(p<0.15)played=false;
+    if(!played&&vid&&t>0.02){played=true;try{vid.currentTime=0;var pr=vid.play();if(pr&&pr.catch)pr.catch(function(){});}catch(e){}}
+  }
+  if(reduce){if(vid){try{vid.play();}catch(e){}}return;}
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
+  window.addEventListener('resize',function(){if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
+  update();
+})();
+</script>
 </body>
 </html>
