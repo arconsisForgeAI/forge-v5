@@ -459,7 +459,7 @@ nav{
         @media(prefers-reduced-motion:reduce){.writeon .wo-line{--wo:114%;transition:none;}}
         /* === bottleneck -> vision pinned bridge (hold, then crossfade) === */
         .bridge-stage{position:relative;z-index:2;height:185vh;}
-        .bridge-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden;}
+        .bridge-sticky{position:sticky;top:13vh;height:74vh;display:flex;align-items:center;overflow:hidden;}
         .bridge-grid{position:relative;width:100%;max-width:1320px;margin:0 auto;padding:32px 52px;display:grid;grid-template-columns:1.28fr .72fr;gap:48px;align-items:center;}
         .bridge-visual{position:relative;width:100%;max-width:940px;}
         .bridge-visual #eci-chart{position:relative;width:100%;will-change:opacity;}
@@ -958,7 +958,8 @@ else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.is
       vid=document.getElementById('vision-video'),
       chart=document.getElementById('eci-chart'),
       pbn=document.getElementById('phase-bn'),
-      pvis=document.getElementById('phase-vis');
+      pvis=document.getElementById('phase-vis'),
+      sticky=stage&&stage.querySelector('.bridge-sticky');
   if(!stage||!pbn||!pvis) return;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var mqDesktop=window.matchMedia('(min-width:1025px)');
@@ -971,7 +972,7 @@ else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.is
     ticking=false;
     if(!mqDesktop.matches){pbn.style.cssText='';pvis.style.cssText='';if(vid)vid.style.opacity='';if(chart)chart.style.opacity='';return;}
     var vh=window.innerHeight||document.documentElement.clientHeight;
-    var total=stage.offsetHeight-vh;
+    var total=stage.offsetHeight-(sticky?sticky.offsetHeight:vh);
     if(total<=0)return;
     var p=c01(-stage.getBoundingClientRect().top/total);
     var t=seg(p,HOLD_START,HOLD_END); // 0 while holding phase 1, ramps to 1, then holds phase 2
