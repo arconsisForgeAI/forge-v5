@@ -633,13 +633,13 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
 @media(max-width:900px){#flow-svg,#flow-node{display:none;}}
 .step-flow{position:relative;max-width:720px;margin:56px auto 0;}
 .step-flow .flow-connect{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0;}
-.step-flow .flow-connect path{fill:none;stroke:#e86010;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 6px rgba(232,96,16,.55));}
+.step-flow .flow-connect path{fill:none;stroke:#ff7820;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 7px rgba(232,96,16,.8)) drop-shadow(0 0 18px rgba(232,96,16,.45));}
 .step-node{position:relative;z-index:1;width:46%;text-align:center;}
-.step-node+.step-node{margin-top:50px;}
+.step-node+.step-node{margin-top:96px;}
 .step-flow .step-node:nth-of-type(odd){margin-left:3%;}
 .step-flow .step-node:nth-of-type(even){margin-left:51%;}
 .step-node h3{font-family:'Outfit',sans-serif;font-size:19px;font-weight:700;letter-spacing:-.5px;color:#fff;margin:0 0 8px;line-height:1.18;}
-.step-node p{color:#fff;font-size:14px;line-height:1.55;font-weight:300;margin:0 auto;max-width:32ch;opacity:.85;}
+.step-node p{color:#fff;font-size:16px;line-height:1.6;font-weight:400;margin:0 auto;max-width:34ch;opacity:1;}
 @media(max-width:560px){.step-flow{max-width:100%;}.step-node{width:100%;}.step-flow .step-node:nth-of-type(odd),.step-flow .step-node:nth-of-type(even){margin-left:0;}.step-flow .flow-connect{display:none;}}
 </style>
 <section class="sw" id="how" aria-label="How Strategy Council works">
@@ -739,8 +739,8 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
     svg.setAttribute('viewBox','0 0 '+flow.clientWidth+' '+flow.clientHeight);
     var b=nodes.map(function(n){var r=n.getBoundingClientRect();return {cx:r.left-fr.left+r.width/2,top:r.top-fr.top,bot:r.bottom-fr.top};});
     for(var i=1;i<b.length;i++){
-      var a=b[i-1],c=b[i],my=(a.bot+c.top)/2;
-      var d='M '+a.cx+' '+a.bot+' C '+a.cx+' '+my+' '+c.cx+' '+my+' '+c.cx+' '+c.top;
+      var a=b[i-1],c=b[i],PAD=16,ay=a.bot+PAD,cy=c.top-PAD,my=(ay+cy)/2;
+      var d='M '+a.cx+' '+ay+' C '+a.cx+' '+my+' '+c.cx+' '+my+' '+c.cx+' '+cy;
       var s=segs[i-1];
       s.el.setAttribute('d',d);
       s.len=s.el.getTotalLength()||1;
