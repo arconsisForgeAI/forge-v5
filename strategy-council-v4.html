@@ -431,6 +431,7 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
         <li><a href="arconsis-forge-v5.html">arconsis Forge</a></li>
         <li><a href="amp-v4.html">AMP</a></li>
         <li><a href="kap-v4.html">KAP</a></li>
+        <li><a href="strategy-council-v4.html" class="is-active" aria-current="page">Strategy Council</a></li>
         <li><a href="blog.html">Media Hub</a></li>
         <li><a href="arconsis-forge-v5.html#kontakt">Contact</a></li>
     </ul>
@@ -443,6 +444,7 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
     <a href="arconsis-forge-v5.html" onclick="closeMobile()">arconsis Forge</a>
     <a href="amp-v4.html" onclick="closeMobile()">AMP</a>
     <a href="kap-v4.html" onclick="closeMobile()">KAP</a>
+    <a href="strategy-council-v4.html" class="is-active" aria-current="page" onclick="closeMobile()">Strategy Council</a>
     <a href="blog.html" onclick="closeMobile()">Media Hub</a>
     <a href="arconsis-forge-v5.html#kontakt" onclick="closeMobile()">Contact</a>
     <a href="mailto:forge@arconsis.com" class="nav-cta">Get in touch</a>
@@ -634,8 +636,8 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
 .step-flow .flow-connect path{fill:none;stroke:#e86010;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 6px rgba(232,96,16,.55));}
 .step-node{position:relative;z-index:1;width:46%;text-align:center;}
 .step-node+.step-node{margin-top:50px;}
-.step-flow .step-node:nth-of-type(odd){margin-left:12%;}
-.step-flow .step-node:nth-of-type(even){margin-left:42%;}
+.step-flow .step-node:nth-of-type(odd){margin-left:3%;}
+.step-flow .step-node:nth-of-type(even){margin-left:51%;}
 .step-node h3{font-family:'Outfit',sans-serif;font-size:19px;font-weight:700;letter-spacing:-.5px;color:#fff;margin:0 0 8px;line-height:1.18;}
 .step-node p{color:#fff;font-size:14px;line-height:1.55;font-weight:300;margin:0 auto;max-width:32ch;opacity:.85;}
 @media(max-width:560px){.step-flow{max-width:100%;}.step-node{width:100%;}.step-flow .step-node:nth-of-type(odd),.step-flow .step-node:nth-of-type(even){margin-left:0;}.step-flow .flow-connect{display:none;}}
@@ -696,7 +698,7 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
       var len=paths[i].getTotalLength()||1;
       paths[i].style.strokeDasharray=len;
       paths[i].style.strokeDashoffset = reduce?0:len*(1-p);
-      paths[i].style.opacity = vis ? (0.12+0.8*p)*fade : 0;
+      paths[i].style.opacity = (vis && i!==0) ? (0.12+0.8*p)*fade : 0;
     }
     node.style.opacity = vis ? (0.15+0.85*p)*fade : 0;
     /* stem: continue the flow down into the first step tile */
@@ -743,10 +745,12 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
     path.setAttribute('d',d.trim());
     len=path.getTotalLength()||1;
     path.style.strokeDasharray=len;
+    if(!reduce)path.style.strokeDashoffset=len;
   }
   function onScroll(){
+    if(len<=1){build();}
     var r=flow.getBoundingClientRect(),H=window.innerHeight;
-    var p=(H*0.80 - r.top)/(r.height*0.85);
+    var p=(H*0.85 - r.top)/(r.height*0.92);
     p=p<0?0:p>1?1:p;
     path.style.strokeDashoffset = reduce?0:len*(1-p);
   }
