@@ -84,6 +84,20 @@ nav{
         .mobile-menu a{color:var(--muted);text-decoration:none;font-size:15px;padding:12px 0;border-bottom:1px solid var(--border);display:block;transition:color .2s;}
         .mobile-menu a:hover{color:var(--text);}
         .mobile-menu .nav-cta{margin-top:14px;text-align:center;padding:13px;font-size:14px;}
+        .nav-dd{position:relative;display:flex;align-items:center;}
+        .nav-dd-toggle{display:inline-flex;align-items:center;gap:5px;background:none;border:none;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:500;color:var(--muted-hi);letter-spacing:-.2px;padding:0;transition:color .2s;}
+        .nav-dd-toggle:hover{color:var(--text);}
+        .nav-dd-toggle.is-active{color:var(--fire-glow);}
+        .nav-dd-caret{transition:transform .25s var(--ease);}
+        .nav-dd:hover .nav-dd-caret,.nav-dd.open .nav-dd-caret{transform:rotate(180deg);}
+        .nav-dd-menu{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%) translateY(6px);min-width:210px;list-style:none;background:rgba(10,6,2,.97);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border:1px solid var(--border-fire);border-radius:12px;padding:8px;display:flex;flex-direction:column;gap:2px;opacity:0;visibility:hidden;transition:opacity .22s var(--ease),transform .22s var(--ease);box-shadow:0 18px 50px rgba(0,0,0,.6);z-index:200;}
+        .nav-dd-menu::before{content:'';position:absolute;top:-18px;left:0;right:0;height:18px;}
+        .nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu,.nav-dd.open .nav-dd-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+        .nav-dd-menu a{display:block;padding:9px 14px;border-radius:8px;font-size:13.5px;font-weight:500;color:var(--muted-hi);text-decoration:none;letter-spacing:-.2px;white-space:nowrap;transition:background .18s,color .18s;}
+        .nav-dd-menu a:hover{background:rgba(232,96,16,.14);color:var(--text);}
+        .nav-dd-menu a.is-active{color:var(--fire-glow);}
+        .mobile-menu .mobile-dd-label{display:block;padding:14px 0 6px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.42);font-weight:600;border-bottom:1px solid var(--border);}
+        .mobile-menu a.mobile-sub{padding-left:16px;}
         /* HERO */
         .hero{position:relative;z-index:2;min-height:auto;display:flex;flex-direction:column;justify-content:center;padding:100px 52px 72px;max-width:1280px;margin:0 auto;}
         .hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--fire-mid);margin-bottom:20px;display:flex;align-items:center;gap:10px;animation:fadeUp .6s var(--ease) .1s both;}
@@ -429,9 +443,14 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
     <a href="arconsis-forge-v5.html" class="nav-logo"><img src="assets/sc/arconsis-forge.png" alt="arconsis Forge" style="height:80px;width:auto;display:block;"></a>
     <ul class="nav-links">
         <li><a href="arconsis-forge-v5.html">arconsis Forge</a></li>
-        <li><a href="amp-v4.html">AMP</a></li>
-        <li><a href="kap-v4.html">KAP</a></li>
-        <li><a href="strategy-council-v4.html" class="is-active" aria-current="page">Strategy Council</a></li>
+        <li class="nav-dd">
+            <button type="button" class="nav-dd-toggle is-active" aria-expanded="false" aria-haspopup="true">Products<svg class="nav-dd-caret" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <ul class="nav-dd-menu">
+                <li><a href="amp-v4.html">AMP</a></li>
+                <li><a href="kap-v4.html">KAP</a></li>
+                <li><a href="strategy-council-v4.html" class="is-active" aria-current="page">Strategy Council</a></li>
+            </ul>
+        </li>
         <li><a href="blog.html">Media Hub</a></li>
         <li><a href="arconsis-forge-v5.html#kontakt">Contact</a></li>
     </ul>
@@ -442,9 +461,10 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
 
 <nav class="mobile-menu" aria-label="Mobile Navigation" id="mobile-menu">
     <a href="arconsis-forge-v5.html" onclick="closeMobile()">arconsis Forge</a>
-    <a href="amp-v4.html" onclick="closeMobile()">AMP</a>
-    <a href="kap-v4.html" onclick="closeMobile()">KAP</a>
-    <a href="strategy-council-v4.html" class="is-active" aria-current="page" onclick="closeMobile()">Strategy Council</a>
+    <span class="mobile-dd-label">Products</span>
+    <a href="amp-v4.html" class="mobile-sub" onclick="closeMobile()">AMP</a>
+    <a href="kap-v4.html" class="mobile-sub" onclick="closeMobile()">KAP</a>
+    <a href="strategy-council-v4.html" class="mobile-sub is-active" onclick="closeMobile()">Strategy Council</a>
     <a href="blog.html" onclick="closeMobile()">Media Hub</a>
     <a href="arconsis-forge-v5.html#kontakt" onclick="closeMobile()">Contact</a>
     <a href="mailto:forge@arconsis.com" class="nav-cta">Get in touch</a>
@@ -1217,5 +1237,13 @@ if(document.readyState!=='loading') initBN(); else document.addEventListener('DO
   });
 })();
 </script>
+<script>(function(){
+  var dd=document.querySelector('.nav-dd'); if(!dd) return;
+  var btn=dd.querySelector('.nav-dd-toggle'); if(!btn) return;
+  function set(o){dd.classList.toggle('open',o);btn.setAttribute('aria-expanded',o?'true':'false');}
+  btn.addEventListener('click',function(e){e.stopPropagation();set(!dd.classList.contains('open'));});
+  document.addEventListener('click',function(e){if(!dd.contains(e.target))set(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+})();</script>
 </body>
 </html>
