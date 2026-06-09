@@ -636,6 +636,8 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
 .step-flow .flow-connect path{fill:none;stroke:#ff7820;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 5px rgba(232,96,16,.5));}
 .step-node{position:relative;z-index:1;width:46%;text-align:center;opacity:0;transition:opacity .7s var(--ease);}
 .step-node.in{opacity:1;}
+.step-node::before{content:'';position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:240px;height:130px;border-radius:50%;background:radial-gradient(ellipse,rgba(232,96,16,.42),transparent 70%);opacity:0;transition:opacity .55s ease;pointer-events:none;z-index:-1;}
+.step-node.lit::before{opacity:1;}
 @media(prefers-reduced-motion:reduce){.step-node{opacity:1;transition:none;}}
 .step-node+.step-node{margin-top:132px;}
 .step-flow .step-node:nth-of-type(odd){margin-left:3%;}
@@ -761,6 +763,8 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
       var pp=(H*0.90 - nr.top)/(H*0.30);
       pp=pp<0?0:pp>1?1:pp;
       s.el.style.strokeDashoffset = reduce?0:s.len*(1-pp);
+      if(i===0&&pp>0.02)nodes[0].classList.add('lit');
+      if(pp>=0.96)nodes[i+1].classList.add('lit');
     }
   }
   build(); onScroll();
