@@ -823,6 +823,34 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
     </div>
 </div>
 
+<style>
+#scroll-prog{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;align-items:center;gap:12px;font-family:'Outfit',sans-serif;pointer-events:none;}
+#scroll-prog .sp-num{font-size:12px;letter-spacing:.06em;color:rgba(255,255,255,.55);font-weight:500;font-variant-numeric:tabular-nums;}
+#scroll-prog .sp-num b{color:#ff7820;font-weight:700;font-size:15px;}
+#scroll-prog .sp-track{width:3px;height:170px;background:rgba(255,255,255,.12);border-radius:3px;overflow:hidden;}
+#scroll-prog .sp-fill{display:block;width:100%;height:0;background:linear-gradient(180deg,#d04500,#ff7820);box-shadow:0 0 8px rgba(232,96,16,.6);transition:height .15s linear;}
+@media(max-width:900px){#scroll-prog{display:none;}}
+@media(prefers-reduced-motion:reduce){#scroll-prog .sp-fill{transition:none;}}
+</style>
+<div id="scroll-prog" aria-hidden="true"><span class="sp-num"><b>1</b>/6</span><div class="sp-track"><span class="sp-fill"></span></div></div>
+<script>(function(){
+  var el=document.getElementById('scroll-prog'); if(!el) return;
+  var numEl=el.querySelector('.sp-num'), fill=el.querySelector('.sp-fill');
+  var sels=['#hero','#about','section[aria-label="What Strategy Council is"]','#how','#payoff','#kontakt'];
+  var secs=sels.map(function(s){return document.querySelector(s);}).filter(Boolean);
+  var total=secs.length||1, cur=-1;
+  function upd(){
+    var de=document.documentElement, H=window.innerHeight, mid=H*0.42, idx=0;
+    for(var i=0;i<secs.length;i++){ if(secs[i].getBoundingClientRect().top<=mid) idx=i; }
+    if(idx!==cur){ cur=idx; numEl.innerHTML='<b>'+(idx+1)+'</b>/'+total; }
+    var max=(de.scrollHeight-H)||1, y=window.scrollY||de.scrollTop||0;
+    var p=y/max; p=p<0?0:p>1?1:p;
+    fill.style.height=(p*100)+'%';
+  }
+  upd();
+  window.addEventListener('scroll',function(){requestAnimationFrame(upd);},{passive:true});
+  window.addEventListener('resize',upd,{passive:true});
+})();</script>
 </main>
 
 <!-- FOOTER -->
