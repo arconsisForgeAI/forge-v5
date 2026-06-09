@@ -358,7 +358,7 @@ nav{
 
         /* KAP: quality pills row */
         .quality-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:48px;margin-bottom:8px;}
-        .quality-pill{font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:#fff;background:rgba(140,40,0,.16);border:1px solid rgba(232,96,16,.40);border-radius:100px;padding:8px 18px;letter-spacing:-.1px;transition:background .2s,border-color .2s,transform .2s var(--ease);}
+        .quality-pill{font-family:'Outfit',sans-serif;font-size:clamp(13px,1.05vw,16px);font-weight:600;color:#fff;background:rgba(140,40,0,.16);border:1px solid rgba(232,96,16,.40);border-radius:100px;padding:clamp(8px,.8vw,12px) clamp(16px,1.5vw,24px);letter-spacing:-.1px;transition:background .2s,border-color .2s,transform .2s var(--ease);}
         .quality-pill:hover{background:rgba(232,96,16,.26);border-color:rgba(255,120,32,.7);transform:translateY(-1px);}
 
         /* KAP capability grid: 10 items tight grid */
@@ -551,21 +551,21 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
 
 <!-- WHAT IT IS -->
 <style>
-.council-ring{position:relative;max-width:1120px;margin:0 auto;min-height:580px;display:grid;place-items:center;}
+.council-ring{position:relative;max-width:1120px;margin:0 auto;min-height:clamp(480px,46vw,600px);display:grid;place-items:center;}
 .council-core{position:relative;z-index:3;max-width:760px;text-align:center;}
 .council-core .sec-h2{margin:0 auto 16px;text-wrap:balance;}
 .council-core .sec-sub{margin:0 auto;max-width:560px;}
-.council-ring .quality-pill{position:absolute;z-index:2;white-space:nowrap;display:inline-flex;align-items:center;gap:7px;transform:translate(-50%,-50%);animation:floatBob 6.5s ease-in-out infinite;}
-.council-ring .quality-pill svg{width:15px;height:15px;flex:none;fill:none;stroke:#ff7820;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.council-ring .quality-pill{position:absolute;z-index:2;white-space:nowrap;display:inline-flex;align-items:center;gap:9px;transform:translate(-50%,-50%);animation:floatBob 6.5s ease-in-out infinite;}
+.council-ring .quality-pill svg{width:clamp(15px,1.3vw,19px);height:clamp(15px,1.3vw,19px);flex:none;fill:none;stroke:#ff7820;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 .council-ring .quality-pill:hover{animation-play-state:paused;}
 @keyframes floatBob{0%,100%{transform:translate(-50%,-50%) translateY(0) rotate(-1.5deg);}50%{transform:translate(-50%,-50%) translateY(-11px) rotate(1.5deg);}}
 /* 7 terms evenly spaced on a ring around the centred text */
 .council-ring .quality-pill:nth-child(2){top:7%;left:50%;animation-duration:6.5s;animation-delay:0s;}    /* Finance - 12 o'clock */
 .council-ring .quality-pill:nth-child(3){top:23%;left:86%;animation-duration:7.2s;animation-delay:.5s;}  /* Legal */
-.council-ring .quality-pill:nth-child(4){top:60%;left:95%;animation-duration:5.8s;animation-delay:.9s;}  /* HR */
+.council-ring .quality-pill:nth-child(4){top:60%;left:92%;animation-duration:5.8s;animation-delay:.9s;}  /* HR */
 .council-ring .quality-pill:nth-child(5){top:89%;left:70%;animation-duration:6.9s;animation-delay:.3s;}  /* Architecture */
 .council-ring .quality-pill:nth-child(6){top:89%;left:30%;animation-duration:7.6s;animation-delay:1.2s;} /* Product */
-.council-ring .quality-pill:nth-child(7){top:60%;left:5%;animation-duration:6.2s;animation-delay:.7s;}   /* Risk */
+.council-ring .quality-pill:nth-child(7){top:60%;left:8%;animation-duration:6.2s;animation-delay:.7s;}   /* Risk */
 .council-ring .quality-pill:nth-child(8){top:23%;left:14%;animation-duration:8s;animation-delay:.2s;}    /* Business development */
 @media(prefers-reduced-motion:reduce){.council-ring .quality-pill{animation:none;}}
 @media(max-width:900px){.council-ring{min-height:0;display:block;text-align:center;}.council-core{margin:0 auto 22px;max-width:none;}.council-ring .quality-pill{position:static;transform:none;animation:none;display:inline-block;margin:5px 4px;}}
@@ -633,9 +633,11 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
 @media(max-width:900px){#flow-svg,#flow-node{display:none;}}
 .step-flow{position:relative;max-width:720px;margin:56px auto 0;}
 .step-flow .flow-connect{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0;}
-.step-flow .flow-connect path{fill:none;stroke:#ff7820;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 7px rgba(232,96,16,.8)) drop-shadow(0 0 18px rgba(232,96,16,.45));}
-.step-node{position:relative;z-index:1;width:46%;text-align:center;}
-.step-node+.step-node{margin-top:96px;}
+.step-flow .flow-connect path{fill:none;stroke:#ff7820;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 5px rgba(232,96,16,.5));}
+.step-node{position:relative;z-index:1;width:46%;text-align:center;opacity:0;transition:opacity .7s var(--ease);}
+.step-node.in{opacity:1;}
+@media(prefers-reduced-motion:reduce){.step-node{opacity:1;transition:none;}}
+.step-node+.step-node{margin-top:132px;}
 .step-flow .step-node:nth-of-type(odd){margin-left:3%;}
 .step-flow .step-node:nth-of-type(even){margin-left:51%;}
 .step-node h3{font-family:'Outfit',sans-serif;font-size:19px;font-weight:700;letter-spacing:-.5px;color:#fff;margin:0 0 8px;line-height:1.18;}
@@ -729,6 +731,8 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
   var nodes=Array.prototype.slice.call(flow.querySelectorAll('.step-node'));
   if(!svg||nodes.length<2) return;
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!('IntersectionObserver' in window)){nodes.forEach(function(n){n.classList.add('in');});}
+  else{var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target);}});},{threshold:.2,rootMargin:'0px 0px -10% 0px'});nodes.forEach(function(n){rio.observe(n);});}
   var segs=[];
   for(var k=0;k<nodes.length-1;k++){
     var pa=document.createElementNS('http://www.w3.org/2000/svg','path');
@@ -739,7 +743,7 @@ html.locked body > *:not(#pwd-gate) { visibility:hidden !important; pointer-even
     svg.setAttribute('viewBox','0 0 '+flow.clientWidth+' '+flow.clientHeight);
     var b=nodes.map(function(n){var r=n.getBoundingClientRect();return {cx:r.left-fr.left+r.width/2,top:r.top-fr.top,bot:r.bottom-fr.top};});
     for(var i=1;i<b.length;i++){
-      var a=b[i-1],c=b[i],PAD=16,ay=a.bot+PAD,cy=c.top-PAD,my=(ay+cy)/2;
+      var a=b[i-1],c=b[i],PAD=18,ay=a.bot+PAD,cy=c.top-PAD,my=(ay+cy)/2;
       var d='M '+a.cx+' '+ay+' C '+a.cx+' '+my+' '+c.cx+' '+my+' '+c.cx+' '+cy;
       var s=segs[i-1];
       s.el.setAttribute('d',d);
