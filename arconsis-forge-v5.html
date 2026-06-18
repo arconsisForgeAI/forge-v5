@@ -143,8 +143,8 @@
         .hero-parent-link:hover{color:var(--text);border-bottom-color:rgba(255,255,255,.4);}
         .hero h1{
             font-family:'Outfit',sans-serif;
-            font-size:clamp(48px,5.8vw,78px);font-weight:900;line-height:1.02;
-            letter-spacing:-3px;text-wrap:balance;margin-bottom:28px;
+            font-size:clamp(30px,7.5vw,78px);font-weight:900;line-height:1.04;
+            letter-spacing:-3px;text-wrap:balance;margin-bottom:28px;overflow-wrap:break-word;
         }
         .hero h1 .word{display:inline-block;opacity:0;transform:translateY(26px);animation:wordUp .65s var(--ease) both;}
         @keyframes wordUp{to{opacity:1;transform:translateY(0)}}
@@ -347,6 +347,10 @@
             .hero{padding:104px 20px 64px;}.sw{padding:60px 20px;}.cta-wrap{padding:0 20px;}
             footer{padding:48px 20px 32px;}.footer-top{grid-template-columns:1fr;gap:28px;}
             .cta-box{padding:48px 24px;}.footer-bottom{flex-direction:column;gap:10px;text-align:center;}
+            html,body{overflow-x:clip;max-width:100%;}
+            .hero-left,.hero-right{min-width:0;}
+            .hero h1{letter-spacing:-1px;}
+            #cglow{display:none;}
         }
 
         /* ── WCAG UTILITIES ── */
