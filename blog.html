@@ -91,9 +91,11 @@
         .hamburger span{display:block;width:21px;height:1.5px;background:#fff;transition:all .3s;}
         .mobile-menu{
             display:none;position:fixed;top:66px;left:0;right:0;
-            background:rgba(0,0,0,.98);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
-            padding:18px 24px 28px;z-index:190;border-bottom:1px solid var(--border);flex-direction:column;gap:2px;
+            background:#0a0602;
+            padding:18px 24px 28px;z-index:199;border-bottom:1px solid var(--border);flex-direction:column;gap:2px;
         }
+        html.menu-open,html.menu-open body{overflow:hidden;}
+        html.menu-open #main-content,html.menu-open #aurora{visibility:hidden;}
         .mobile-menu a{color:#fff;text-decoration:none;font-size:15px;padding:12px 0;border-bottom:1px solid var(--border);display:block;transition:color .2s;}
         .mobile-menu a:hover{color:#fff;}
         .mobile-menu .nav-cta{margin-top:14px;text-align:center;padding:13px;font-size:14px;}
@@ -436,10 +438,10 @@ window.addEventListener('scroll',()=>{nav.classList.toggle('compact',window.scro
 const hbg=document.getElementById('hamburger'),mob=document.getElementById('mobile-menu');
 hbg?.addEventListener('click',()=>{
     const open=mob.style.display==='flex';
-    mob.style.display=open?'none':'flex';
+    mob.style.display=open?'none':'flex';document.documentElement.classList.toggle('menu-open',!open);
     hbg.setAttribute('aria-expanded',open?'false':'true');
 });
-function closeMobile(){mob.style.display='none';hbg?.setAttribute('aria-expanded','false');}
+function closeMobile(){mob.style.display='none';document.documentElement.classList.remove('menu-open');hbg?.setAttribute('aria-expanded','false');}
 // glass mouse-reactive gradient (skip trading cards — they handle their own sheen)
 document.querySelectorAll('.gc:not(.person-card)').forEach(card=>{
     const glow=document.createElement('div');glow.className='gc-glow';card.prepend(glow);
