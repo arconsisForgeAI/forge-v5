@@ -343,7 +343,10 @@
         .slider-next{right:14px;}
         @media(max-width:820px){.media-row-tall{grid-template-columns:1fr;gap:40px;}.media-row-wide{max-width:100%;}.media-block{padding:0 24px;}.slide{flex:0 0 75%;}.slides{padding:24px 12.5%;}.slider-prev{left:6px;}.slider-next{right:6px;}}
         @media(max-width:600px){.media-block{padding:0 20px;}}
-    </style>
+    
+        /* Subtle captions (WCAG 1.2.2) */
+        ::cue{background:rgba(0,0,0,.55);color:#fff;font-family:'Inter','DM Sans',sans-serif;font-size:.78em;line-height:1.35;}
+</style>
 </head>
 <body>
 <div id="aurora"><div class="blob blob-1"></div><div class="blob blob-2"></div></div>
@@ -531,7 +534,7 @@ const MEDIA_ROWS = [
         : `<div class="media-row-tall">${row.items.map(i=>itemHtml(i,"tall")).join("")}</div>`).join("");
     const lb=document.getElementById('media-lb'), player=document.getElementById('mediaLbPlayer'),
           title=document.getElementById('mediaLbTitle'), closeBtn=document.getElementById('mediaLbClose');
-    function openVid(src,t){player.src=src;title.textContent=t;lb.classList.add('open');player.play().catch(()=>{});}
+    function openVid(src,t){player.src=src;title.textContent=t;player.querySelectorAll('track').forEach(x=>x.remove());var vtt=src.replace(/\.mp4$/,'.vtt'),lang=/achim|patrick/.test(src)?'de':'en';var tr=document.createElement('track');tr.kind='captions';tr.src=vtt;tr.srclang=lang;tr.label=lang==='de'?'Deutsch':'English';tr.default=true;player.appendChild(tr);try{if(player.textTracks&&player.textTracks.length)player.textTracks[0].mode='showing';}catch(e){}lb.classList.add('open');player.play().catch(()=>{});}
     function shutVid(){lb.classList.remove('open');player.pause();player.removeAttribute('src');player.load();}
     closeBtn.addEventListener('click',shutVid);
     lb.addEventListener('click',e=>{if(e.target===lb)shutVid();});

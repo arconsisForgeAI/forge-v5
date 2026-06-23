@@ -1,0 +1,41 @@
+WEBVTT
+
+00:00.000 --> 00:04.080
+Unter Legacy Code versteht man Projekte, die seit vielen Jahren nicht mehr enthängt wurden
+
+00:04.080 --> 00:08.200
+und die meistens mittlerweile so alt geworden sind, dass selbst erfahrende Entwickler sie
+
+00:08.200 --> 00:09.200
+nie gerne annehmen.
+
+00:09.200 --> 00:11.680
+Es ist eine sehr verbreitete Krankheit, möchte man sagen.
+
+00:11.680 --> 00:13.840
+Viele Leute denken immer nur, dass es halt viel Geld kostet.
+
+00:13.840 --> 00:17.560
+Das Problem ist eher die Implikation, die es mit sich zieht, dass man eben zum einen
+
+00:17.560 --> 00:22.280
+höhere Anklungsfläche bietet für Sicherheitsschwachstellen, die nicht gefixt werden, aber auch sonstige
+
+00:22.280 --> 00:23.560
+Kosten für die Wartung.
+
+00:23.560 --> 00:27.760
+Viele Unternehmen würden gerne migrieren, aber anhand von Priorisierung etc.
+
+00:27.840 --> 00:31.640
+Da kommt es letzten Endes nicht dazu, was dann halt für eine gewisse Zeit gut gehen kann,
+
+00:31.640 --> 00:34.960
+bis halt eben der Tag X kommt, wo es dann eben knallen wird.
+
+00:34.960 --> 00:38.760
+Und meistens realisieren die Unternehmen erst dann, wenn es zu spät ist, dass sie eigentlich
+
+00:38.760 --> 00:44.040
+schon hätten viel früher in ihre Code-Migration angehen sollen, um eben genau solche Sachen zu vermeiden.
+
