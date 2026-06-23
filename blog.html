@@ -561,7 +561,7 @@ const CAROUSELS = [
             <div class="ch"><h3>${escH(c.title)}</h3><p>${escH(c.caption)}</p></div>
             <div class="slider">
                 <button class="slider-btn slider-prev" aria-label="Previous">‹</button>
-                <div class="slides">${slides}</div>
+                <div class="slides" tabindex="0" role="group" aria-label="${escA(c.title)} gallery, scroll horizontally">${slides}</div>
                 <button class="slider-btn slider-next" aria-label="Next">›</button>
             </div>
         </div>`;

@@ -1180,7 +1180,7 @@ if(document.readyState!=='loading') initBN(); else document.addEventListener('DO
     s.className='word3d-layer'+(i===0?' front':'');
     s.textContent=text;
     s.style.transform='translateZ(-'+i+'px)';
-    if(i!==0) s.style.color=shade(i/depth);
+    if(i!==0){s.style.color=shade(i/depth);s.setAttribute('aria-hidden','true');}
     inner.appendChild(s);
   }
   host.appendChild(inner);
