@@ -548,9 +548,6 @@ const MEDIA_ROWS = [
 // Carousels (1:1 vom Sales-Showcase)
 const CAROUSELS = [
     { slug:"initiation",    title:"Initiation",        caption:"Onboarding · Erstkontakt mit Forge",      shape:"sq", slides:6 },
-    { slug:"founder",       title:"Founder Story",     caption:"Wie Forge entstanden ist",                shape:"sq", slides:6 },
-    { slug:"fired-company", title:"Fired Company",     caption:"I fired my entire company",               shape:"sq", slides:4 },
-    { slug:"p4e-dogfood",   title:"P4E Dogfooding",    caption:"Forge baut Forge mit P4E",                shape:"sq", slides:6 }
 ];
 (function(){
     const wrap=document.getElementById("carousels");
@@ -562,7 +559,7 @@ const CAROUSELS = [
             `<div class="slide ${c.shape}" data-idx="${i}"><img loading="lazy" src="assets/media/carousels/${c.slug}/slide-${i+1}.jpg" alt="${escA(c.title)} slide ${i+1}"></div>`
         ).join("");
         return `<div class="carousel-item" data-slug="${c.slug}">
-            <div class="ch"><h3>${escH(c.title)}</h3><p>${escH(c.caption)}</p></div>
+            <div class="ch"><h3>${escH(c.title)}</h3></div>
             <div class="slider">
                 <button class="slider-btn slider-prev" aria-label="Previous">‹</button>
                 <div class="slides" tabindex="0" role="group" aria-label="${escA(c.title)} gallery, scroll horizontally">${slides}</div>
