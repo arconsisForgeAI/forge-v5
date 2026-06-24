@@ -1,53 +1,53 @@
 WEBVTT
 
-00:00.000 --> 00:03.920
+00:00.000 --> 00:03.820
 Die Idee, KI zu benutzen, ist auf jeden Fall eine gute Idee,
 
-00:03.920 --> 00:06.400
+00:03.920 --> 00:06.300
 die man so Migrationsprojekte deutlich erleichtern kann.
 
-00:06.400 --> 00:08.520
+00:06.400 --> 00:08.300
 Was die Leute allerdings oft vergessen,
 
-00:08.520 --> 00:12.160
+00:08.880 --> 00:12.100
 ist die Komplexität von Softwareprojekten, die variiert natürlich.
 
-00:12.160 --> 00:15.240
+00:12.340 --> 00:15.240
 Und für kleinere Projekte ist es auf jeden Fall feasible, wenn man da sagt,
 
-00:15.240 --> 00:19.560
+00:15.300 --> 00:19.520
 okay, dann nehme ich mir meine lokale KI und ich tue das mit der zusammen migrieren.
 
-00:19.560 --> 00:24.200
+00:20.100 --> 00:24.200
 Aber sobald man eben auf größere Systeme oder auch übergreifende Systeme,
 
-00:24.200 --> 00:25.720
+00:24.200 --> 00:25.640
 wenn man solche Sachen migrieren möchte,
 
-00:25.720 --> 00:27.680
+00:25.760 --> 00:27.680
 da kommt man an den Punkt relativ schnell, wo man merkt,
 
-00:27.720 --> 00:31.920
+00:27.680 --> 00:31.980
 okay, ich brauche ein Harness, irgendwas, was hier meinen Agenten oder meinem LLM
 
-00:31.920 --> 00:35.400
+00:31.980 --> 00:35.380
 ein bisschen Guardrails, Tooling, Guidelines etc. zur Verfügung stellt,
 
-00:35.400 --> 00:38.840
+00:35.480 --> 00:38.840
 einfach um diese Migration dann auch in meinem Interesse durchzuführen
 
-00:38.840 --> 00:41.120
+00:38.840 --> 00:41.040
 und nicht einfach nach bestem Wissen und Gewissen.
 
-00:41.120 --> 00:44.640
+00:41.180 --> 00:44.660
 Also wir bauen aktuell AMP, das ist der Agentic Modernization Process,
 
-00:44.640 --> 00:48.880
+00:44.720 --> 00:48.880
 was quasi unser Harness ist, um unseren Agenten gewisse Kontext,
 
-00:48.880 --> 00:51.320
+00:49.120 --> 00:51.300
 Guardrails und Toolings zur Verfügung zu stellen
 
-00:51.320 --> 00:54.160
+00:51.300 --> 00:54.180
 und dafür zu sorgen, dass sie eben nicht willkürlich eskalieren.
 
